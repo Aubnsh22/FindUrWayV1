@@ -1,0 +1,409 @@
+@import "tailwindcss";
+
+/* ─── FindUrWay Design System ─────────────────────────────── */
+/* Premium teal/dark theme inspired by Linear, Vercel, Stripe */
+
+@theme {
+  --color-primary: #14B8A6;
+  --color-primary-dark: #0D9488;
+  --color-primary-light: #5EEAD4;
+  --color-primary-glow: rgba(20, 184, 166, 0.15);
+
+  --color-bg-primary: #0F172A;
+  --color-bg-secondary: #1E293B;
+  --color-bg-tertiary: #334155;
+  --color-bg-card: rgba(30, 41, 59, 0.6);
+  --color-bg-glass: rgba(15, 23, 42, 0.82);
+
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  --color-border: rgba(148, 163, 184, 0.1);
+  --color-border-hover: rgba(148, 163, 184, 0.2);
+
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #3B82F6;
+
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-fade-in: fade-in 0.6s ease-out;
+}
+
+/* ─── Base Styles ──────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body[data-theme='light'] {
+  --color-bg-primary: #F8FAFC;
+  --color-bg-secondary: #FFFFFF;
+  --color-bg-tertiary: #E2E8F0;
+  --color-bg-card: rgba(255, 255, 255, 0.7);
+  --color-bg-glass: rgba(248, 250, 252, 0.85);
+
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-border-hover: rgba(15, 23, 42, 0.16);
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-tertiary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ─── Glass Card ───────────────────────────────────────────── */
+
+.glass-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(20, 184, 166, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ─── Gradient Text ────────────────────────────────────────── */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Primary Button ───────────────────────────────────────── */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(20, 184, 166, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+/* ─── Secondary Button ─────────────────────────────────────── */
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  padding: 12px 32px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-glow);
+}
+
+/* ─── Glow Effect ──────────────────────────────────────────── */
+
+.glow {
+  box-shadow: 0 0 20px var(--color-primary-glow),
+    0 0 60px rgba(20, 184, 166, 0.05);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px var(--color-primary-glow);
+}
+
+/* ─── Match Percentage Colors ──────────────────────────────── */
+
+.match-excellent { color: #22C55E; }
+.match-good { color: var(--color-primary); }
+.match-moderate { color: #F59E0B; }
+.match-low { color: #EF4444; }
+
+.match-bg-excellent { background: rgba(34, 197, 94, 0.1); border-color: rgba(34, 197, 94, 0.3); }
+.match-bg-good { background: rgba(20, 184, 166, 0.1); border-color: rgba(20, 184, 166, 0.3); }
+.match-bg-moderate { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); }
+.match-bg-low { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); }
+
+/* ─── Skill Tag ────────────────────────────────────────────── */
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--color-primary-glow);
+  color: var(--color-primary-light);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  background: rgba(20, 184, 166, 0.25);
+  border-color: var(--color-primary);
+}
+
+.skill-tag-missing {
+  background: rgba(239, 68, 68, 0.1);
+  color: #FCA5A5;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ─── Progress Bars ─────────────────────────────────────── */
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(148, 163, 184, 0.12);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  box-shadow: 0 0 18px rgba(20, 184, 166, 0.35);
+  transition: width 0.6s ease;
+}
+
+/* ─── Line Clamp Utilities ──────────────────────────────── */
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Skeleton Loading ─────────────────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-secondary) 25%,
+    var(--color-bg-tertiary) 50%,
+    var(--color-bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  border-radius: 8px;
+}
+
+/* ─── Animations ───────────────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(20, 184, 166, 0.3); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scan-line {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Animated Background Orbs ─────────────────────────────── */
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: var(--animate-float);
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--color-primary);
+  top: -10%;
+  right: -10%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: #3B82F6;
+  bottom: -10%;
+  left: -10%;
+  animation-delay: -3s;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: #0EA5E9;
+  top: 40%;
+  left: 50%;
+  animation-delay: -1.5s;
+}
+
+/* ─── Page Transitions ─────────────────────────────────────── */
+
+.page-enter {
+  animation: var(--animate-slide-up);
+}
+
+/* ─── Responsive Container ─────────────────────────────────── */
+
+.container-app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .container-app {
+    padding: 0 16px;
+  }
+}
+
+/* ─── Input Focus Ring ─────────────────────────────────────── */
+
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-primary);
+}
+
+/* ─── Textarea Profile ────────────────────────────────────── */
+
+.profile-textarea {
+  width: 100%;
+  min-height: 200px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.profile-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-glow),
+    0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.profile-textarea::placeholder {
+  color: var(--color-text-muted);
+}
