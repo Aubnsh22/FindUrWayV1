@@ -9,10 +9,10 @@ from app.config import get_settings
 
 settings = get_settings()
 
-# Create SQLAlchemy engine for PostgreSQL
+# Create SQLAlchemy engine
 engine = create_engine(
     settings.DATABASE_URL,
-    pool_pre_ping=True,  # Verify connections before using them
+    pool_pre_ping=True,
     pool_size=10,
     max_overflow=20,
 )

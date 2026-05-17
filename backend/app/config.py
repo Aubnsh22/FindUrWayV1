@@ -3,17 +3,27 @@ Application configuration using Pydantic Settings.
 Reads from .env file and environment variables.
 """
 import os
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
     # Database
-    DATABASE_URL: str = "postgresql://postgres:102004@localhost:5432/findurway"
+    DATABASE_URL: str = "postgresql://postgres@localhost:5432/findurway"
 
     # Adzuna API
     ADZUNA_APP_ID: str = "your_app_id_here"
     ADZUNA_APP_KEY: str = "your_app_key_here"
+
+    # France Travail API
+    FRANCE_TRAVAIL_CLIENT_ID: str = ""
+    FRANCE_TRAVAIL_CLIENT_SECRET: str = ""
 
     # NLP Model
     MODEL_NAME: str = "all-MiniLM-L6-v2"
@@ -24,10 +34,6 @@ class Settings(BaseSettings):
     # Server
     HOST: str = "0.0.0.0"
     PORT: int = 8000
-
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
 
 
 @lru_cache()

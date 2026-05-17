@@ -75,4 +75,26 @@ export async function getSavedCount() {
   return response.data
 }
 
+/**
+ * Get Morocco market intelligence
+ */
+export async function getMarketInsights() {
+  const response = await api.get('/market/insights')
+  return response.data
+}
+
+/**
+ * Upload and analyze a CV/resume file
+ * @param {File} file - PDF, DOCX, TXT, or image file
+ */
+export async function analyzeCV(file) {
+  const formData = new FormData()
+  formData.append('file', file)
+  const response = await api.post('/analyze/cv', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    timeout: 120000,
+  })
+  return response.data
+}
+
 export default api

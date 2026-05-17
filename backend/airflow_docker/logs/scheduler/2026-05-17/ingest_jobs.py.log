@@ -1,0 +1,477 @@
+[2026-05-17T01:18:22.433+0000] {processor.py:186} INFO - Started process (PID=203) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:18:22.435+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:18:22.439+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:22.437+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:18:22.503+0000] {processor.py:925} INFO - DAG(s) 'job_ingestion_pipeline' retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:18:24.244+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.241+0000] {override.py:1900} INFO - Created Permission View: can read on DAG:job_ingestion_pipeline
+[2026-05-17T01:18:24.276+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.275+0000] {override.py:1900} INFO - Created Permission View: can edit on DAG:job_ingestion_pipeline
+[2026-05-17T01:18:24.298+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.297+0000] {override.py:1900} INFO - Created Permission View: can delete on DAG:job_ingestion_pipeline
+[2026-05-17T01:18:24.314+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.313+0000] {override.py:1900} INFO - Created Permission View: can read on DAG Run:job_ingestion_pipeline
+[2026-05-17T01:18:24.326+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.326+0000] {override.py:1900} INFO - Created Permission View: can create on DAG Run:job_ingestion_pipeline
+[2026-05-17T01:18:24.338+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.338+0000] {override.py:1900} INFO - Created Permission View: can delete on DAG Run:job_ingestion_pipeline
+[2026-05-17T01:18:24.352+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.351+0000] {override.py:1900} INFO - Created Permission View: menu access on DAG Run:job_ingestion_pipeline
+[2026-05-17T01:18:24.353+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.352+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-17T01:18:24.381+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.381+0000] {dag.py:3262} INFO - Creating ORM DAG for job_ingestion_pipeline
+[2026-05-17T01:18:24.425+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:18:24.425+0000] {dag.py:4180} INFO - Setting next_dagrun for job_ingestion_pipeline to 2026-05-16 00:00:00+00:00, run_after=2026-05-17 00:00:00+00:00
+[2026-05-17T01:18:24.466+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 2.049 seconds
+[2026-05-17T01:20:48.985+0000] {processor.py:186} INFO - Started process (PID=78) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:20:48.994+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:20:49.040+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:20:49.031+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:20:49.793+0000] {processor.py:925} INFO - DAG(s) 'job_ingestion_pipeline' retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:20:51.111+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:20:51.110+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-17T01:20:52.015+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:20:52.014+0000] {dag.py:4180} INFO - Setting next_dagrun for job_ingestion_pipeline to 2026-05-16 00:00:00+00:00, run_after=2026-05-17 00:00:00+00:00
+[2026-05-17T01:20:52.678+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 3.914 seconds
+[2026-05-17T01:22:45.935+0000] {processor.py:186} INFO - Started process (PID=153) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:22:45.946+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:22:45.957+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:22:45.956+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:22:46.014+0000] {processor.py:925} INFO - DAG(s) 'job_ingestion_pipeline' retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:22:46.057+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:22:46.056+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-17T01:22:46.115+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:22:46.114+0000] {dag.py:4180} INFO - Setting next_dagrun for job_ingestion_pipeline to 2026-05-16 00:00:00+00:00, run_after=2026-05-17 00:00:00+00:00
+[2026-05-17T01:22:46.153+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.231 seconds
+[2026-05-17T01:23:17.148+0000] {processor.py:186} INFO - Started process (PID=207) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:23:17.150+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:23:17.157+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:23:17.156+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:23:17.213+0000] {processor.py:925} INFO - DAG(s) 'job_ingestion_pipeline' retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:23:17.255+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:23:17.255+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-17T01:23:17.316+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:23:17.316+0000] {dag.py:4180} INFO - Setting next_dagrun for job_ingestion_pipeline to 2026-05-16 00:00:00+00:00, run_after=2026-05-17 00:00:00+00:00
+[2026-05-17T01:23:17.353+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.218 seconds
+[2026-05-17T01:51:43.493+0000] {processor.py:186} INFO - Started process (PID=239) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:51:43.494+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:51:43.537+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:51:43.498+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:51:43.683+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:51:43.609+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 35, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T01:51:43.686+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:51:43.748+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.263 seconds
+[2026-05-17T01:51:51.129+0000] {processor.py:186} INFO - Started process (PID=296) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:51:51.131+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:51:51.135+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:51:51.134+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:51:51.170+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:51:51.165+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 35, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T01:51:51.172+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:51:51.230+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.111 seconds
+[2026-05-17T01:54:57.010+0000] {processor.py:186} INFO - Started process (PID=297) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:54:57.029+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:54:57.040+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:54:57.034+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:54:57.149+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:54:57.122+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 41, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T01:54:57.152+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:54:59.747+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 2.811 seconds
+[2026-05-17T01:55:30.569+0000] {processor.py:186} INFO - Started process (PID=360) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:55:30.578+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:55:30.585+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:55:30.583+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:55:30.699+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:55:30.692+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 41, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T01:55:30.703+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:55:30.739+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.190 seconds
+[2026-05-17T01:56:01.209+0000] {processor.py:186} INFO - Started process (PID=423) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:56:01.211+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T01:56:01.215+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:56:01.214+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:56:01.737+0000] {logging_mixin.py:190} INFO - [2026-05-17T01:56:01.728+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 41, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T01:56:01.740+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T01:56:01.952+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.806 seconds
+[2026-05-17T02:03:12.186+0000] {processor.py:186} INFO - Started process (PID=478) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T02:03:12.213+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T02:03:12.216+0000] {logging_mixin.py:190} INFO - [2026-05-17T02:03:12.216+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T02:03:12.545+0000] {logging_mixin.py:190} INFO - [2026-05-17T02:03:12.536+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 41, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T02:03:12.548+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T02:03:12.600+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.425 seconds
+[2026-05-17T13:16:15.937+0000] {processor.py:186} INFO - Started process (PID=76) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:16:15.947+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T13:16:15.971+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:16:15.970+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:16:16.193+0000] {processor.py:925} INFO - DAG(s) 'job_ingestion_pipeline' retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:16:17.000+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:16:16.999+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-05-17T13:16:17.086+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:16:17.086+0000] {dag.py:4180} INFO - Setting next_dagrun for job_ingestion_pipeline to 2026-05-16 00:00:00+00:00, run_after=2026-05-17 00:00:00+00:00
+[2026-05-17T13:16:17.183+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 1.270 seconds
+[2026-05-17T13:37:24.570+0000] {processor.py:186} INFO - Started process (PID=73) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:37:24.572+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T13:37:24.580+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:37:24.580+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:37:24.651+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:37:24.633+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T13:37:24.654+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:37:24.694+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.135 seconds
+[2026-05-17T13:38:07.416+0000] {processor.py:186} INFO - Started process (PID=130) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:38:07.469+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T13:38:07.473+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:38:07.472+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:38:07.511+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:38:07.501+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T13:38:07.513+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:38:20.511+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 12.606 seconds
+[2026-05-17T13:38:50.582+0000] {processor.py:186} INFO - Started process (PID=187) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:38:50.582+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T13:38:50.583+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:38:50.583+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:38:50.596+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:38:50.593+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T13:38:50.597+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:38:50.612+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.035 seconds
+[2026-05-17T13:44:18.728+0000] {processor.py:186} INFO - Started process (PID=199) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:44:18.730+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T13:44:18.732+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:44:18.732+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:44:18.786+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:44:18.764+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T13:44:18.791+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:46:58.392+0000] {processor.py:211} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "postgres" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 207, in _run_file_processor
+    _handle_dag_file_processing()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 188, in _handle_dag_file_processing
+    result: tuple[int, int, int] = dag_file_processor.process_file(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 928, in process_file
+    DagFileProcessor.update_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 648, in update_import_errors
+    existing_import_error_files = [x.filename for x in session.query(ParseImportError.filename).all()]
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2773, in all
+    return self._iter().all()
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2916, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/future/engine.py", line 412, in connect
+    return super(Engine, self).connect()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2026-05-17T13:50:39.088+0000] {processor.py:186} INFO - Started process (PID=71) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:50:39.090+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T13:50:39.105+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:50:39.103+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:50:38.976+0000] {logging_mixin.py:190} INFO - [2026-05-17T13:50:38.965+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T13:50:38.981+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T13:50:39.502+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.162 seconds
+[2026-05-17T14:03:33.290+0000] {processor.py:186} INFO - Started process (PID=140) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T14:03:33.293+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T14:03:33.297+0000] {logging_mixin.py:190} INFO - [2026-05-17T14:03:33.296+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T14:03:33.399+0000] {logging_mixin.py:190} INFO - [2026-05-17T14:03:33.383+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T14:03:33.403+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T14:03:33.461+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.190 seconds
+[2026-05-17T16:12:54.420+0000] {processor.py:186} INFO - Started process (PID=85) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:12:54.436+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T16:12:54.469+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:12:54.467+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:12:54.622+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:12:54.598+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T16:12:54.630+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:12:54.789+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.436 seconds
+[2026-05-17T16:23:16.352+0000] {processor.py:186} INFO - Started process (PID=77) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:23:16.384+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T16:23:16.416+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:23:16.415+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:23:16.801+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:23:16.734+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T16:23:16.807+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:23:16.909+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.585 seconds
+[2026-05-17T16:24:13.931+0000] {processor.py:186} INFO - Started process (PID=134) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:24:13.936+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T16:24:13.942+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:24:13.940+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:24:14.092+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:24:14.022+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T16:24:14.105+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:24:14.179+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.263 seconds
+[2026-05-17T16:31:28.102+0000] {processor.py:186} INFO - Started process (PID=174) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:31:28.104+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T16:31:28.109+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:31:28.108+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:31:28.154+0000] {logging_mixin.py:190} INFO - [2026-05-17T16:31:28.136+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T16:31:28.158+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T16:31:28.204+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.120 seconds
+[2026-05-17T18:14:22.945+0000] {processor.py:186} INFO - Started process (PID=80) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:14:22.950+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T18:14:22.959+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:14:22.958+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:14:23.020+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:14:23.002+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T18:14:23.025+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:14:23.083+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.174 seconds
+[2026-05-17T18:15:20.148+0000] {processor.py:186} INFO - Started process (PID=143) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:15:20.151+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T18:15:20.162+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:15:20.158+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:15:20.259+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:15:20.229+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T18:15:20.262+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:15:29.893+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 9.781 seconds
+[2026-05-17T18:22:59.217+0000] {processor.py:186} INFO - Started process (PID=71) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:22:59.219+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T18:22:59.226+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:22:59.226+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:22:59.313+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:22:59.285+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T18:22:59.319+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:22:59.469+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.274 seconds
+[2026-05-17T18:23:45.847+0000] {processor.py:186} INFO - Started process (PID=140) to work on /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:23:45.851+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ingest_jobs.py for tasks to queue
+[2026-05-17T18:23:45.860+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:23:45.860+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:23:45.928+0000] {logging_mixin.py:190} INFO - [2026-05-17T18:23:45.901+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/ingest_jobs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/ingest_jobs.py", line 36, in <module>
+    from app.config import get_settings
+ModuleNotFoundError: No module named 'app'
+[2026-05-17T18:23:45.935+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/ingest_jobs.py
+[2026-05-17T18:23:46.008+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ingest_jobs.py took 0.175 seconds

@@ -1,7 +1,3 @@
-"""
-Pydantic schemas for request/response validation.
-Defines the data contracts between frontend and backend.
-"""
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
@@ -10,17 +6,13 @@ from datetime import datetime
 # ─── Request Schemas ───────────────────────────────────────────
 
 class ProfileInput(BaseModel):
-    """User profile description for analysis."""
     text: str = Field(
-        ...,
-        min_length=20,
-        max_length=5000,
+        ..., min_length=20, max_length=5000,
         description="User's profile description including skills, projects, experience"
     )
 
 
 class SaveJobRequest(BaseModel):
-    """Request to save a job."""
     job_id: str
     title: str
     company: str = "Unknown"
@@ -37,8 +29,15 @@ class SaveJobRequest(BaseModel):
 
 # ─── Response Schemas ──────────────────────────────────────────
 
+class MatchExplanation(BaseModel):
+    summary: str = ""
+    matched_skills_detail: List[str] = []
+    missing_skills_detail: List[str] = []
+    compatibility: str = ""
+    skill_tier_breakdown: Optional[dict] = None
+
+
 class JobResult(BaseModel):
-    """A single job result with match scoring."""
     job_id: str
     title: str
     company: str
@@ -51,11 +50,11 @@ class JobResult(BaseModel):
     match_percentage: float = Field(..., ge=0, le=100)
     matched_skills: List[str] = []
     missing_skills: List[str] = []
+    explanation: Optional[MatchExplanation] = None
     created: Optional[str] = None
 
 
 class SkillAnalysis(BaseModel):
-    """Extracted skills breakdown."""
     technical_skills: List[str] = []
     soft_skills: List[str] = []
     tools: List[str] = []
@@ -64,22 +63,21 @@ class SkillAnalysis(BaseModel):
 
 
 class CareerInsight(BaseModel):
-    """AI-generated career insight."""
     title: str
     description: str
     icon: str = "lightbulb"
 
 
 class LearningPath(BaseModel):
-    """Recommended learning path."""
     skill: str
     reason: str
     resources: List[str] = []
-    priority: str = "medium"  # low, medium, high
+    priority: str = "medium"
+    impact_score: Optional[float] = None
+    impact_label: Optional[str] = None
 
 
 class AnalysisResponse(BaseModel):
-    """Complete analysis response sent to frontend."""
     jobs: List[JobResult]
     skills: SkillAnalysis
     career_insights: List[CareerInsight]
@@ -87,10 +85,10 @@ class AnalysisResponse(BaseModel):
     top_categories: List[str]
     avg_match_score: float
     total_jobs_analyzed: int
+    market_intel: Optional["MarketInsight"] = None
 
 
 class SavedJobResponse(BaseModel):
-    """Saved job response."""
     id: int
     job_id: str
     title: str
@@ -105,21 +103,39 @@ class SavedJobResponse(BaseModel):
     matched_skills: List[str]
     missing_skills: List[str]
     created_at: Optional[datetime] = None
-
     class Config:
         from_attributes = True
 
 
 class TrendingSkill(BaseModel):
-    """Trending skill data."""
     name: str
     count: int
-    growth: float = 0.0  # percentage growth
+    growth: float = 0.0
     category: str = ""
 
 
 class JobCategory(BaseModel):
-    """Job category with count."""
     name: str
     count: int
     tag: str = ""
+
+
+class SectorTrend(BaseModel):
+    sector: str
+    growth_pct: float
+    demand_level: str
+    key_skills: List[str] = []
+
+
+class HiringHotspot(BaseModel):
+    city: str
+    job_count: int
+    avg_salary_mad: Optional[float] = None
+
+
+class MarketInsight(BaseModel):
+    trending_sectors: List[SectorTrend] = []
+    most_demanded_skills: List[str] = []
+    hiring_hotspots: List[HiringHotspot] = []
+    salary_range_mad: Optional[str] = None
+    market_summary: str = ""

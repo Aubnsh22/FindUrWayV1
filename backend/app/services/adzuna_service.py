@@ -127,6 +127,7 @@ def _normalize_adzuna_job(job: Dict, country: str) -> Dict:
         "salary_max": job.get("salary_max"),
         "category": job.get("category", {}).get("label", ""),
         "url": job.get("redirect_url", ""),
+        "source": "adzuna",
         "created": job.get("created", ""),
     }
 
@@ -291,15 +292,21 @@ def _get_demo_jobs(query: str = "") -> List[Dict]:
         },
     ]
     
+    result = []
+    for j in demo_jobs:
+        job = dict(j)
+        job["source"] = "adzuna"
+        result.append(job)
+
     # Filter by query if provided
     if query:
         query_lower = query.lower()
         filtered = [
-            j for j in demo_jobs
+            j for j in result
             if query_lower in j["title"].lower()
             or query_lower in j["description"].lower()
             or query_lower in j["category"].lower()
         ]
-        return filtered if filtered else demo_jobs
-    
-    return demo_jobs
+        return filtered if filtered else result
+
+    return result

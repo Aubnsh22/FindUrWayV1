@@ -1,0 +1,10 @@
+import psycopg2
+conn = psycopg2.connect(host="localhost", port=5432, user="postgres", dbname="findurway")
+cur = conn.cursor()
+cur.execute("SHOW server_encoding")
+print("server_encoding:", cur.fetchone()[0])
+cur.execute("SHOW client_encoding")
+print("client_encoding:", cur.fetchone()[0])
+cur.execute("SELECT pg_encoding_to_char(encoding) FROM pg_database WHERE datname='findurway'")
+print("db_encoding:", cur.fetchone()[0])
+conn.close()

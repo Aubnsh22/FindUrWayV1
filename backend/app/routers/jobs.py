@@ -5,7 +5,7 @@ Provides trending skills and categories endpoints.
 from fastapi import APIRouter, Query
 from typing import List, Optional
 from app.models.schemas import TrendingSkill, JobCategory
-from app.services.adzuna_service import fetch_jobs_from_adzuna
+from app.services.job_source_manager import JobSourceManager
 import logging
 
 logger = logging.getLogger(__name__)
@@ -22,13 +22,8 @@ async def search_jobs(
 ):
     """Search for jobs with optional filters."""
     try:
-        jobs = await fetch_jobs_from_adzuna(
-            query=query,
-            location=location,
-            category=category,
-            page=page,
-            results_per_page=limit,
-        )
+        manager = JobSourceManager()
+        jobs = await manager.fetch_all(query=query, results_per_page=limit)
         return {
             "jobs": jobs,
             "total": len(jobs),
