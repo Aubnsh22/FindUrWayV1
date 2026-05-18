@@ -21,7 +21,7 @@ function MatchExplanation({ explanation }) {
   return (
     <div className="mt-3 pt-3 border-t border-black/[0.04]">
       <button onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 text-xs font-medium text-[#111111] hover:text-[#111111]/70 transition-colors w-full">
+        className="flex items-center gap-1.5 text-xs font-medium text-[#3B82F6] hover:text-[#3B82F6]/70 transition-colors w-full">
         <Info className="w-3.5 h-3.5" />
         Why this matches you
         {open ? <ChevronUp className="w-3 h-3 ml-auto" /> : <ChevronDown className="w-3 h-3 ml-auto" />}
@@ -70,11 +70,11 @@ function JobCard({ job, index, onSave, savedIds }) {
   return (
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.04, duration: 0.45 }}
-      className="bg-white/80 rounded-2xl border border-black/[0.04] p-5 transition-all duration-300 hover:border-[#000000]/15 hover:shadow-[0_8px_30px_rgba(0, 0, 0,0.04)]">
+      className="bg-white/80 rounded-2xl border border-black/[0.04] p-5 transition-all duration-300 hover:border-[#3B82F6]/15 hover:shadow-[0_8px_30px_rgba(59,130,246,0.04)]">
       <div className="flex items-start gap-4">
-        <div className="hidden sm:flex flex-shrink-0 w-14 h-14 rounded-xl bg-[#111111]/[0.06] border border-[#111111]/15 items-center justify-center flex-col">
-          <span className="text-lg font-bold font-mono text-[#111111] leading-none">{pct.toFixed(0)}</span>
-          <span className="text-[9px] text-[#768278] font-medium tracking-wider uppercase leading-none mt-0.5">{pctLabel}</span>
+        <div className="hidden sm:flex flex-shrink-0 w-14 h-14 rounded-xl bg-[#3B82F6]/[0.06] border border-[#3B82F6]/15 items-center justify-center flex-col">
+          <span className="text-lg font-bold font-mono text-[#3B82F6] leading-none">{pct.toFixed(0)}</span>
+          <span className="text-[9px] text-[#3B82F6]/70 font-medium tracking-wider uppercase leading-none mt-0.5">{pctLabel}</span>
         </div>
 
         <div className="flex-1 min-w-0">
@@ -235,8 +235,8 @@ export default function ResultsPage() {
           </button>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-1 text-[#000000]">Your <span className="text-[#000000]">Career Matches</span></h1>
-              <p className="text-[#4A544C] text-sm">{results.total_jobs_analyzed} positions analyzed &middot; <span className="text-[#000000] font-mono font-semibold">{results.avg_match_score.toFixed(0)}%</span> average match</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-1 text-[#000000]">Your <span className="text-[#3B82F6]">Career Matches</span></h1>
+              <p className="text-[#4A544C] text-sm">{results.total_jobs_analyzed} positions analyzed &middot; <span className="text-[#3B82F6] font-mono font-semibold">{results.avg_match_score.toFixed(0)}%</span> average match</p>
             </div>
             <div className="flex gap-3">
               {[
