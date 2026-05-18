@@ -31,6 +31,11 @@ class Settings(BaseSettings):
     # CORS
     FRONTEND_URL: str = "http://localhost:5173"
 
+    # JWT
+    JWT_SECRET: str = "findurway-jwt-secret-change-in-production-2024"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRY_MINUTES: int = 1440  # 24 hours
+
     # Server
     HOST: str = "0.0.0.0"
     PORT: int = 8000

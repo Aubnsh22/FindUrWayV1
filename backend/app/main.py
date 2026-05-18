@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import get_settings
 from app.database import init_db
 from app.services import nlp_service
-from app.routers import analysis, jobs, saved_jobs
+from app.routers import analysis, jobs, saved_jobs, auth
 import logging
 
 # Configure logging
@@ -91,6 +91,7 @@ app.add_middleware(
 )
 
 # ── Register Routers ──
+app.include_router(auth.router)
 app.include_router(analysis.router)
 app.include_router(jobs.router)
 app.include_router(saved_jobs.router)

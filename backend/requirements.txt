@@ -12,3 +12,6 @@ python-dotenv
 alembic
 python-multipart
 apache-airflow
+passlib[bcrypt]
+python-jose[cryptography]
+bcrypt<5.0

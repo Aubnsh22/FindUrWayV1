@@ -10,10 +10,15 @@ const api = axios.create({
 /**
  * Analyze user profile — main matching endpoint
  * @param {string} text - User's profile description
+ * @param {Object} [prefs] - Optional preferences
+ * @param {string} [prefs.preferred_city] - Preferred city (e.g. Casablanca)
+ * @param {string[]} [prefs.preferred_categories] - Preferred categories
+ * @param {number} [prefs.min_match_score] - Minimum match % threshold
  * @returns {Promise} Analysis results with matched jobs
  */
-export async function analyzeProfile(text) {
-  const response = await api.post('/analyze', { text })
+export async function analyzeProfile(text, prefs = {}) {
+  const body = { text, ...prefs }
+  const response = await api.post('/analyze', body)
   return response.data
 }
 
@@ -43,34 +48,66 @@ export async function getCategories() {
   return response.data
 }
 
+const LS_KEY = 'findurway_saved_jobs'
+
+function isLoggedIn() {
+  return !!localStorage.getItem('token')
+}
+
+function getLocalSavedJobs() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]') } catch { return [] }
+}
+
+function setLocalSavedJobs(jobs) {
+  localStorage.setItem(LS_KEY, JSON.stringify(jobs))
+}
+
 /**
- * Save a job
+ * Save a job — uses localStorage if not logged in
  */
 export async function saveJob(job) {
+  if (!isLoggedIn()) {
+    const jobs = getLocalSavedJobs()
+    if (jobs.some(j => j.job_id === job.job_id)) throw new Error('Already saved')
+    jobs.unshift({ ...job, id: Date.now() })
+    setLocalSavedJobs(jobs)
+    return jobs[0]
+  }
   const response = await api.post('/saved-jobs/', job)
   return response.data
 }
 
 /**
- * Get saved jobs
+ * Get saved jobs — uses localStorage if not logged in
  */
 export async function getSavedJobs() {
+  if (!isLoggedIn()) {
+    return getLocalSavedJobs()
+  }
   const response = await api.get('/saved-jobs/')
   return response.data
 }
 
 /**
- * Delete a saved job
+ * Delete a saved job — uses localStorage if not logged in
  */
 export async function deleteSavedJob(jobId) {
+  if (!isLoggedIn()) {
+    const jobs = getLocalSavedJobs().filter(j => j.job_id !== jobId)
+    setLocalSavedJobs(jobs)
+    return { message: 'Removed', job_id: jobId }
+  }
   const response = await api.delete(`/saved-jobs/${jobId}`)
   return response.data
 }
 
 /**
- * Get saved jobs count
+ * Get saved jobs count — uses localStorage if not logged in
  */
 export async function getSavedCount() {
+  if (!isLoggedIn()) {
+    return { count: getLocalSavedJobs().length }
+  }
   const response = await api.get('/saved-jobs/count')
   return response.data
 }
@@ -95,6 +132,38 @@ export async function analyzeCV(file) {
     timeout: 120000,
   })
   return response.data
+}
+
+/**
+ * Sign up a new user
+ */
+export async function signupUser(email, username, password) {
+  const res = await api.post('/auth/signup', { email, username, password })
+  return res.data
+}
+
+/**
+ * Log in an existing user
+ */
+export async function loginUser(username, password) {
+  const res = await api.post('/auth/login', { username, password })
+  return res.data
+}
+
+/**
+ * Get current user profile
+ */
+export async function getMe() {
+  const res = await api.get('/auth/me')
+  return res.data
+}
+
+/**
+ * Get current user's analysis history
+ */
+export async function getHistory() {
+  const res = await api.get('/auth/history')
+  return res.data
 }
 
 export default api

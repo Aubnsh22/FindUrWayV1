@@ -2,7 +2,7 @@
 SQLAlchemy ORM models for the FindUrWay database.
 Stores saved jobs, user profiles, and analysis history.
 """
-from sqlalchemy import Column, Integer, String, Float, Text, DateTime, JSON, Boolean
+from sqlalchemy import Column, Integer, String, Float, Text, DateTime, JSON, Boolean, ForeignKey
 from sqlalchemy.sql import func
 from app.database import Base
 
@@ -10,9 +10,14 @@ from app.database import Base
 class SavedJob(Base):
     """Model for jobs saved by users."""
     __tablename__ = "saved_jobs"
+    __table_args__ = (
+        # Allow unique job per user, or unique job for anonymous (NULL user_id)
+        # PostgreSQL treats each NULL as distinct for unique constraints
+    )
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    job_id = Column(String(255), unique=True, index=True, nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    job_id = Column(String(255), nullable=False)
     title = Column(String(500), nullable=False)
     company = Column(String(500), default="Unknown")
     location = Column(String(500), default="Morocco")
@@ -32,6 +37,8 @@ class AnalysisHistory(Base):
     __tablename__ = "analysis_history"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    profile_name = Column(String(255), default="")
     profile_text = Column(Text, nullable=False)
     extracted_skills = Column(JSON, default=list)
     top_categories = Column(JSON, default=list)
@@ -56,6 +63,17 @@ class JobListing(Base):
     url = Column(String(1000), default="")
     source = Column(String(100), default="adzuna")
     fetched_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
+class User(Base):
+    """Model for registered users (login/signup)."""
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    username = Column(String(100), unique=True, index=True, nullable=False)
+    hashed_password = Column(String(255), nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 class SkillDemand(Base):

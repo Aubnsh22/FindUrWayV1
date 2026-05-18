@@ -4,21 +4,41 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { toast } from 'sonner'
 import {
   Sparkles, Bookmark, BookmarkCheck, ExternalLink, MapPin,
-  Building2, Calendar, TrendingUp, AlertCircle,
+  Building2, Calendar, TrendingUp, AlertCircle, ChevronDown, ChevronUp,
   Filter, Search, ArrowLeft, Brain, Target, Briefcase,
-  CheckCircle2, DollarSign
+  CheckCircle2, DollarSign, Info, BarChart3, Compass, Code2,
 } from 'lucide-react'
 import { getSavedJobs, saveJob } from '../services/api.js'
-import { getMatchColor, getMatchBgColor, formatSalary, timeAgo } from '../lib/utils.js'
+import { formatSalary, timeAgo } from '../lib/utils.js'
+import { AILoadingAnimation } from '../components/ui/SharedUI.jsx'
 
-function MatchBadge({ percentage }) {
-  const color = getMatchColor(percentage)
-  const bgColor = getMatchBgColor(percentage)
-  const dotColor = color === 'match-excellent' ? 'bg-success' : color === 'match-good' ? 'bg-primary' : color === 'match-moderate' ? 'bg-warning' : 'bg-danger'
+function MatchExplanation({ explanation }) {
+  const [open, setOpen] = useState(false)
+  if (!explanation) return null
+  const tier = explanation.skill_tier_breakdown || {}
+  const coreMatched = tier.domain_relevant_matched || []
+
   return (
-    <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-sm font-bold ${bgColor}`}>
-      <div className={`w-2 h-2 rounded-full ${dotColor}`} />
-      <span className={color}>{percentage.toFixed(0)}%</span>
+    <div className="mt-3 pt-3 border-t border-black/[0.04]">
+      <button onClick={() => setOpen(!open)}
+        className="flex items-center gap-1.5 text-xs font-medium text-[#C46B4D] hover:text-[#C46B4D]/70 transition-colors w-full">
+        <Info className="w-3.5 h-3.5" />
+        Why this matches you
+        {open ? <ChevronUp className="w-3 h-3 ml-auto" /> : <ChevronDown className="w-3 h-3 ml-auto" />}
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+            <p className="text-xs text-[#4A544C] mt-2 leading-relaxed">{explanation.summary}</p>
+            <p className="text-xs text-[#768278] mt-1.5 italic">{explanation.compatibility}</p>
+            {coreMatched.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-1">
+                {coreMatched.map(s => <span key={s} className="text-[10px] px-2 py-0.5 rounded-full bg-[#2A362B]/[0.05] text-[#2A362B] border border-[#2A362B]/10">{s}</span>)}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -43,70 +63,122 @@ function JobCard({ job, index, onSave, savedIds }) {
     } catch { toast.error('Failed to save job') }
   }
 
+  const pct = job.match_percentage
+  const pctLabel = pct >= 70 ? 'Strong' : pct >= 50 ? 'Good' : pct >= 30 ? 'Moderate' : 'Low'
+  const isMorocco = /morocco|maroc|casablanca|rabat|temara|kenitra|tanger|fes|marrakech|agadir/i.test(job.location)
+
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05 }} className="glass-card p-6 group">
-      <div className="flex items-start justify-between gap-4 mb-4">
+    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.04, duration: 0.45 }}
+      className="bg-white/80 rounded-2xl border border-black/[0.04] p-5 transition-all duration-300 hover:border-[#2A362B]/15 hover:shadow-[0_8px_30px_rgba(42,54,43,0.04)]">
+      <div className="flex items-start gap-4">
+        <div className="hidden sm:flex flex-shrink-0 w-14 h-14 rounded-xl bg-[#C46B4D]/[0.06] border border-[#C46B4D]/15 items-center justify-center flex-col">
+          <span className="text-lg font-bold font-mono text-[#C46B4D] leading-none">{pct.toFixed(0)}</span>
+          <span className="text-[9px] text-[#768278] font-medium tracking-wider uppercase leading-none mt-0.5">{pctLabel}</span>
+        </div>
+
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 mb-2 flex-wrap">
-            <MatchBadge percentage={job.match_percentage} />
-            {job.category && <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/5 text-text-muted border border-border">{job.category}</span>}
+          <div className="flex items-start justify-between gap-3 mb-1">
+            <div className="flex items-center gap-2 flex-wrap min-w-0">
+              <span className="sm:hidden text-xs font-bold font-mono text-[#C46B4D] bg-[#C46B4D]/[0.06] px-2 py-0.5 rounded-md">{pct.toFixed(0)}%</span>
+              {job.category && (
+                <span className="text-[10px] font-medium text-[#6B786C] bg-[#6B786C]/[0.06] px-2 py-0.5 rounded-md border border-[#6B786C]/10">{job.category}</span>
+              )}
+              {isMorocco && (
+                <span className="text-[10px] font-medium text-[#2A362B] bg-[#2A362B]/[0.06] px-2 py-0.5 rounded-md border border-[#2A362B]/10 flex items-center gap-1">
+                  <MapPin className="w-2.5 h-2.5" /> Morocco
+                </span>
+              )}
+            </div>
+            <button onClick={handleSave}
+              className={`p-1.5 rounded-lg transition-all flex-shrink-0 ${isSaved ? 'bg-[#C46B4D]/10 text-[#C46B4D]' : 'hover:bg-black/[0.02] text-[#768278] hover:text-[#C46B4D]'}`}>
+              {isSaved ? <BookmarkCheck className="w-4 h-4" /> : <Bookmark className="w-4 h-4" />}
+            </button>
           </div>
-          <h3 className="text-lg font-bold text-text-primary group-hover:text-primary transition-colors">{job.title}</h3>
+
+          <h3 className="text-base font-bold text-[#000000] mb-1.5 leading-snug">{job.title}</h3>
+
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-[#4A544C] mb-3">
+            <span className="flex items-center gap-1"><Building2 className="w-3 h-3 text-[#768278]" />{job.company}</span>
+            <span className="flex items-center gap-1"><MapPin className="w-3 h-3 text-[#768278]" />{job.location}</span>
+            {salary && <span className="flex items-center gap-1"><DollarSign className="w-3 h-3 text-[#768278]" />{salary}</span>}
+            {job.created && <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-[#768278]" />{timeAgo(job.created)}</span>}
+          </div>
+
+          <p className="text-[13px] text-[#4A544C] leading-relaxed line-clamp-2 mb-3">{job.description}</p>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {job.matched_skills?.slice(0, 6).map(s => (
+              <span key={s} className="text-[11px] px-2.5 py-1 rounded-lg bg-[#C46B4D]/[0.05] border border-[#C46B4D]/12 text-[#C46B4D] font-medium">{s}</span>
+            ))}
+            {(job.missing_skills?.length || 0) > 0 && (
+              <span className="text-[11px] text-[#768278] font-medium">+{job.missing_skills.length} gaps</span>
+            )}
+          </div>
+
+          <MatchExplanation explanation={job.explanation} />
+
+          {job.url && (
+            <div className="mt-3 pt-3 border-t border-black/[0.04]">
+              <a href={job.url} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#2A362B] hover:text-[#2A362B]/70 transition-colors">
+                View Listing <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+          )}
         </div>
-        <button onClick={handleSave} className={`p-2 rounded-lg transition-all ${isSaved ? 'bg-primary/10 text-primary' : 'hover:bg-white/5 text-text-muted hover:text-primary'}`}>
-          {isSaved ? <BookmarkCheck className="w-5 h-5" /> : <Bookmark className="w-5 h-5" />}
-        </button>
       </div>
-      <div className="flex flex-wrap items-center gap-4 text-sm text-text-secondary mb-4">
-        <span className="flex items-center gap-1.5"><Building2 className="w-4 h-4 text-text-muted" />{job.company}</span>
-        <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-text-muted" />{job.location}</span>
-        {salary && <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-text-muted" />{salary}</span>}
-        {job.created && <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-text-muted" />{timeAgo(job.created)}</span>}
-      </div>
-      <p className="text-sm text-text-secondary leading-relaxed mb-4 line-clamp-3">{job.description}</p>
-      <div className="space-y-3">
-        {job.matched_skills?.length > 0 && (
-          <div>
-            <div className="flex items-center gap-1.5 text-xs text-success font-medium mb-2"><CheckCircle2 className="w-3.5 h-3.5" />Matched Skills</div>
-            <div className="flex flex-wrap gap-1.5">{job.matched_skills.map(s => <span key={s} className="skill-tag text-xs">{s}</span>)}</div>
-          </div>
-        )}
-        {job.missing_skills?.length > 0 && (
-          <div>
-            <div className="flex items-center gap-1.5 text-xs text-warning font-medium mb-2"><AlertCircle className="w-3.5 h-3.5" />Skills to Learn</div>
-            <div className="flex flex-wrap gap-1.5">{job.missing_skills.map(s => <span key={s} className="skill-tag skill-tag-missing text-xs">{s}</span>)}</div>
-          </div>
-        )}
-      </div>
-      {job.url && (
-        <div className="mt-5 pt-4 border-t border-border">
-          <a href={job.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary-light transition-colors font-medium">
-            View Full Listing <ExternalLink className="w-4 h-4" />
-          </a>
-        </div>
-      )}
     </motion.div>
   )
 }
 
-function AnalysisAnimation() {
-  const steps = ['Generating semantic embeddings...','Searching job databases...','Computing cosine similarity...','Ranking best matches...']
-  const [step, setStep] = useState(0)
-  useEffect(() => { const i = setInterval(() => setStep(p => (p+1) % steps.length), 1500); return () => clearInterval(i) }, [])
+function SkillGapBar({ label, matched, total }) {
+  const pct = total > 0 ? (matched / total) * 100 : 0
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
-      <motion.div animate={{ rotate: 360 }} transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-        className="w-20 h-20 rounded-full border-2 border-primary/20 border-t-primary flex items-center justify-center">
-        <Brain className="w-8 h-8 text-primary" />
-      </motion.div>
-      <div className="text-center">
-        <h2 className="text-2xl font-bold mb-2">AI Analysis in Progress</h2>
-        <AnimatePresence mode="wait">
-          <motion.p key={step} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-text-secondary">{steps[step]}</motion.p>
-        </AnimatePresence>
+    <div className="space-y-1">
+      <div className="flex justify-between text-xs">
+        <span className="text-[#4A544C]">{label}</span>
+        <span className="text-[#768278] font-mono">{matched}/{total}</span>
+      </div>
+      <div className="h-1 bg-black/[0.04] rounded-full overflow-hidden">
+        <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 1 }}
+          className="h-full rounded-full bg-[#2A362B]/30" />
       </div>
     </div>
+  )
+}
+
+function ProfileHeader({ results }) {
+  const firstExp = results.jobs?.[0]?.explanation
+  const tier = firstExp?.skill_tier_breakdown || {}
+  const userDomain = tier.user_domain || 'Tech Professional'
+  const skillCount = results.skills?.technical_skills?.length || 0
+  const topCat = results.top_categories?.[0] || 'Technology'
+
+  return (
+    <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
+      className="bg-white/70 border border-black/[0.04] rounded-2xl p-5 mb-6">
+      <div className="flex items-start gap-4 flex-wrap">
+        <div className="w-10 h-10 rounded-xl bg-[#2A362B]/[0.06] border border-[#2A362B]/10 flex items-center justify-center flex-shrink-0">
+          <Brain className="w-5 h-5 text-[#2A362B]" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="text-sm font-semibold text-[#000000] mb-1">AI Profile Understanding</div>
+          <div className="flex flex-wrap gap-x-6 gap-y-1 text-[12px] text-[#4A544C]">
+            <span><span className="text-[#768278]">Primary domain:</span> {userDomain}</span>
+            <span><span className="text-[#768278]">Top category:</span> {topCat}</span>
+            <span><span className="text-[#768278]">Skills detected:</span> {skillCount}</span>
+            <span><span className="text-[#768278]">Jobs matched:</span> {results.jobs?.length || 0}/{results.total_jobs_analyzed || 0}</span>
+          </div>
+          <p className="text-[12px] text-[#768278] mt-1.5 leading-relaxed">
+            Prioritised Software Engineering and Full Stack roles matching your stack.
+            {results.jobs?.some(j => /morocco|maroc|casablanca|rabat/i.test(j.location))
+              ? ' Moroccan positions promoted based on your location preferences.'
+              : ''}
+          </p>
+        </div>
+      </div>
+    </motion.div>
   )
 }
 
@@ -118,6 +190,8 @@ export default function ResultsPage() {
   const [filterCategory, setFilterCategory] = useState('all')
   const [sortBy, setSortBy] = useState('match')
   const [searchQuery, setSearchQuery] = useState('')
+  const [filterCity, setFilterCity] = useState('')
+  const [minThreshold, setMinThreshold] = useState(0)
   const [page, setPage] = useState(1)
   const pageSize = 6
 
@@ -130,124 +204,138 @@ export default function ResultsPage() {
   }, [navigate])
 
   useEffect(() => {
-    const loadSaved = async () => {
-      try {
-        const data = await getSavedJobs()
-        setSavedIds(new Set(data.map(j => j.job_id)))
-      } catch (error) {
-        console.warn('Failed to load saved jobs:', error)
-      }
-    }
-    loadSaved()
+    getSavedJobs().then(data => setSavedIds(new Set(data.map(j => j.job_id)))).catch(() => {})
   }, [])
 
-  useEffect(() => {
-    setPage(1)
-  }, [filterCategory, sortBy, searchQuery])
+  useEffect(() => { setPage(1) }, [filterCategory, sortBy, searchQuery])
 
-  if (loading) return <div className="pt-16"><AnalysisAnimation /></div>
+  if (loading) return <div className="pt-16"><AILoadingAnimation text="Neural matching in progress..." /></div>
   if (!results) return null
 
   let filteredJobs = results.jobs || []
   if (filterCategory !== 'all') filteredJobs = filteredJobs.filter(j => j.category === filterCategory)
   if (searchQuery) { const q = searchQuery.toLowerCase(); filteredJobs = filteredJobs.filter(j => j.title.toLowerCase().includes(q) || j.company.toLowerCase().includes(q)) }
+  if (filterCity) { const c = filterCity.toLowerCase(); filteredJobs = filteredJobs.filter(j => j.location.toLowerCase().includes(c)) }
+  if (minThreshold > 0) filteredJobs = filteredJobs.filter(j => j.match_percentage >= minThreshold)
   if (sortBy === 'match') filteredJobs.sort((a, b) => b.match_percentage - a.match_percentage)
-  else if (sortBy === 'salary') filteredJobs.sort((a, b) => (b.salary_max||0) - (a.salary_max||0))
+  else if (sortBy === 'salary') filteredJobs.sort((a, b) => (b.salary_max || 0) - (a.salary_max || 0))
   const categories = [...new Set(results.jobs.map(j => j.category).filter(Boolean))]
   const totalPages = Math.max(1, Math.ceil(filteredJobs.length / pageSize))
   const pagedJobs = filteredJobs.slice((page - 1) * pageSize, page * pageSize)
 
+  const allMatched = new Set(); const allMissing = new Set()
+  results.jobs.forEach(j => { (j.matched_skills || []).forEach(s => allMatched.add(s)); (j.missing_skills || []).forEach(s => allMissing.add(s)) })
+
   return (
     <div className="pt-20 pb-16">
       <div className="container-app">
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <button onClick={() => navigate('/')} className="flex items-center gap-2 text-sm text-text-secondary hover:text-primary transition-colors mb-4">
+        <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
+          <button onClick={() => navigate('/')} className="flex items-center gap-1.5 text-sm text-[#768278] hover:text-[#2A362B] transition-colors mb-4">
             <ArrowLeft className="w-4 h-4" />New Analysis
           </button>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">Your <span className="gradient-text">Career Matches</span></h1>
-              <p className="text-text-secondary">{results.total_jobs_analyzed} jobs analyzed · {results.jobs.length} matches · <span className="text-primary font-medium">{results.avg_match_score.toFixed(0)}% avg</span></p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-1 text-[#000000]">Your <span className="text-[#2A362B]">Career Matches</span></h1>
+              <p className="text-[#4A544C] text-sm">{results.total_jobs_analyzed} positions analyzed &middot; <span className="text-[#2A362B] font-mono font-semibold">{results.avg_match_score.toFixed(0)}%</span> average match</p>
             </div>
             <div className="flex gap-3">
-              <div className="glass-card px-4 py-2.5 text-center"><div className="text-xl font-bold text-primary">{results.jobs.length}</div><div className="text-xs text-text-muted">Matches</div></div>
-              <div className="glass-card px-4 py-2.5 text-center"><div className="text-xl font-bold text-success">{results.skills.technical_skills.length}</div><div className="text-xs text-text-muted">Skills</div></div>
+              {[
+                { label: 'Matches', value: results.jobs.length },
+                { label: 'Skills', value: results.skills.technical_skills.length },
+              ].map(s => (
+                <div key={s.label} className="bg-white/70 border border-black/[0.04] rounded-xl px-4 py-2.5 text-center min-w-[80px]">
+                  <div className="text-xl font-bold font-mono text-[#2A362B]">{s.value}</div>
+                  <div className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[280px_1fr] gap-8">
-          <motion.aside initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="space-y-5">
-            <div className="glass-card p-4">
+        <ProfileHeader results={results} />
+
+        <div className="grid lg:grid-cols-[260px_1fr] gap-8">
+          <motion.aside initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="space-y-4">
+            <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-4">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#768278]" />
                 <input type="text" placeholder="Search jobs..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full bg-bg-primary border border-border rounded-lg pl-10 pr-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary" />
+                  className="w-full bg-white/50 border border-black/[0.06] rounded-xl pl-10 pr-4 py-2.5 text-sm text-[#1A1E1A] placeholder:text-[#768278] focus:outline-none focus:border-[#2A362B]/20 transition-colors" />
               </div>
             </div>
-            <div className="glass-card p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-text-primary mb-3"><Filter className="w-4 h-4 text-primary" />Filters</div>
-              <label className="text-xs text-text-muted">Category</label>
-              <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)} className="w-full bg-bg-primary border border-border rounded-lg px-3 py-2 text-sm text-text-primary focus:outline-none focus:border-primary mt-1">
-                <option value="all">All Categories</option>
+            <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><BarChart3 className="w-4 h-4 text-[#2A362B]" />Skill Coverage</div>
+              <SkillGapBar label="Technical Skills" matched={allMatched.size} total={results.skills.technical_skills.length || 1} />
+            </div>
+            <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><Filter className="w-4 h-4 text-[#2A362B]" />Filters</div>
+              <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">City</label>
+              <div className="relative mt-1 mb-3">
+                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#768278]" />
+                <input type="text" placeholder="Any city" value={filterCity} onChange={e => { setFilterCity(e.target.value); setPage(1); }}
+                  className="w-full bg-white/50 border border-black/[0.06] rounded-xl pl-9 pr-3 py-2 text-sm text-[#1A1E1A] placeholder:text-[#768278] focus:outline-none focus:border-[#2A362B]/20 transition-colors" />
+              </div>
+              <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">Category</label>
+              <select value={filterCategory} onChange={e => { setFilterCategory(e.target.value); setPage(1); }}
+                className="w-full bg-white/50 border border-black/[0.06] rounded-xl px-3 py-2 text-sm text-[#1A1E1A] focus:outline-none focus:border-[#2A362B]/20 mt-1 mb-3">
+                <option value="all">All</option>
                 {categories.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
-              <label className="text-xs text-text-muted mt-3 block">Sort By</label>
-              <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="w-full bg-bg-primary border border-border rounded-lg px-3 py-2 text-sm text-text-primary focus:outline-none focus:border-primary mt-1">
+              <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">Min Match</label>
+              <div className="flex items-center gap-2 mt-1 mb-3">
+                <input type="range" min={0} max={90} step={5} value={minThreshold} onChange={e => { setMinThreshold(Number(e.target.value)); setPage(1); }}
+                  className="flex-1 h-1 accent-[#2A362B] cursor-pointer" />
+                <span className="text-[10px] font-mono text-[#768278] font-semibold w-8 text-right">{minThreshold}%</span>
+              </div>
+              <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">Sort</label>
+              <select value={sortBy} onChange={e => { setSortBy(e.target.value); setPage(1); }}
+                className="w-full bg-white/50 border border-black/[0.06] rounded-xl px-3 py-2 text-sm text-[#1A1E1A] focus:outline-none focus:border-[#2A362B]/20 mt-1">
                 <option value="match">Match %</option><option value="salary">Salary</option>
               </select>
             </div>
-            <div className="glass-card p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-text-primary mb-3"><CheckCircle2 className="w-4 h-4 text-success" />Your Skills</div>
-              <div className="flex flex-wrap gap-1.5">{results.skills.technical_skills.slice(0,12).map(s => <span key={s} className="skill-tag text-xs">{s}</span>)}</div>
+            <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><CheckCircle2 className="w-4 h-4 text-[#2A362B]" />Your Skills</div>
+              <div className="flex flex-wrap gap-1.5">{results.skills.technical_skills.slice(0, 12).map(s => <span key={s} className="text-[11px] px-2.5 py-1 rounded-lg bg-[#2A362B]/[0.04] border border-[#2A362B]/08 text-[#2A362B] font-medium">{s}</span>)}</div>
             </div>
-            <div className="glass-card p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-text-primary mb-3"><Sparkles className="w-4 h-4 text-primary" />Insights</div>
+            <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><Sparkles className="w-4 h-4 text-[#2A362B]" />AI Insights</div>
               <div className="space-y-3">{results.career_insights.map((ci, i) => (
-                <div key={i} className="text-sm"><div className="font-medium text-text-primary mb-0.5">{ci.title}</div><p className="text-xs text-text-secondary">{ci.description}</p></div>
+                <div key={i} className="text-sm"><div className="font-medium text-[#000000] mb-0.5">{ci.title}</div><p className="text-[11px] text-[#768278] leading-relaxed">{ci.description}</p></div>
               ))}</div>
             </div>
             {results.learning_paths?.length > 0 && (
-              <div className="glass-card p-5">
-                <div className="flex items-center gap-2 text-sm font-semibold text-text-primary mb-3"><TrendingUp className="w-4 h-4 text-warning" />Learn Next</div>
-                <div className="space-y-2.5">{results.learning_paths.slice(0,5).map((lp, i) => (
+              <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><TrendingUp className="w-4 h-4 text-[#2A362B]" />Learn Next</div>
+                <div className="space-y-2.5">{results.learning_paths.slice(0, 5).map((lp, i) => (
                   <div key={i} className="flex items-start gap-2">
-                    <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${lp.priority==='high'?'bg-danger':'bg-warning'}`} />
-                    <div><div className="text-xs font-medium text-text-primary">{lp.skill}</div><div className="text-xs text-text-muted">{lp.reason}</div></div>
+                    <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${lp.priority === 'high' ? 'bg-[#2A362B]' : 'bg-[#768278]'}`} />
+                    <div className="flex-1">
+                      <div className="text-xs font-medium text-[#000000]">{lp.skill}</div>
+                      <div className="text-[11px] text-[#768278]">{lp.reason}</div>
+                      {lp.impact_label && <div className="text-[11px] text-[#2A362B] mt-0.5 font-medium"><Sparkles className="w-3 h-3 inline mr-0.5" />{lp.impact_label}</div>}
+                    </div>
+                    {lp.impact_score && <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded-full bg-[#2A362B]/[0.06] text-[#2A362B]">+{lp.impact_score}%</span>}
                   </div>
                 ))}</div>
               </div>
             )}
           </motion.aside>
+
           <div className="space-y-4">
             {pagedJobs.length > 0 ? pagedJobs.map((job, i) => (
               <JobCard key={job.job_id} job={job} index={i} onSave={() => setSavedIds(p => new Set([...p, job.job_id]))} savedIds={savedIds} />
             )) : (
-              <div className="glass-card p-12 text-center">
-                <Briefcase className="w-12 h-12 text-text-muted mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-text-primary mb-2">No Matches Found</h3>
-                <p className="text-sm text-text-secondary">Try adjusting your filters.</p>
+              <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-12 text-center">
+                <Briefcase className="w-12 h-12 text-[#768278] mx-auto mb-4" />
+                <h3 className="text-lg font-bold text-[#000000] mb-2">No Matches Found</h3>
+                <p className="text-sm text-[#4A544C]">Try adjusting your filters.</p>
               </div>
             )}
             {filteredJobs.length > pageSize && (
               <div className="flex items-center justify-center gap-3 pt-4">
-                <button
-                  className="btn-secondary px-4 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={() => setPage(p => Math.max(1, p - 1))}
-                  disabled={page === 1}
-                >
-                  Previous
-                </button>
-                <div className="text-sm text-text-secondary">
-                  Page <span className="text-text-primary font-medium">{page}</span> of {totalPages}
-                </div>
-                <button
-                  className="btn-secondary px-4 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                  disabled={page === totalPages}
-                >
-                  Next
-                </button>
+                <button className="px-5 py-2 rounded-xl text-sm font-semibold text-[#1A1E1A] bg-white/60 border border-black/[0.06] hover:bg-white/80 hover:border-black/[0.1] transition-all disabled:opacity-40 cursor-pointer" onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>Previous</button>
+                <span className="text-sm text-[#768278] font-mono">Page {page} / {totalPages}</span>
+                <button className="px-5 py-2 rounded-xl text-sm font-semibold text-[#1A1E1A] bg-white/60 border border-black/[0.06] hover:bg-white/80 hover:border-black/[0.1] transition-all disabled:opacity-40 cursor-pointer" onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}>Next</button>
               </div>
             )}
           </div>

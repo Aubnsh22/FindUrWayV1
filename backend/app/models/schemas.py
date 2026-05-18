@@ -10,6 +10,18 @@ class ProfileInput(BaseModel):
         ..., min_length=20, max_length=5000,
         description="User's profile description including skills, projects, experience"
     )
+    preferred_city: str = Field(
+        "", max_length=100,
+        description="Preferred city for job search (e.g. Casablanca, Rabat, Marrakech)"
+    )
+    preferred_categories: List[str] = Field(
+        [],
+        description="Preferred job categories to prioritize (e.g. AI / Machine Learning, Data Science)"
+    )
+    min_match_score: float = Field(
+        0.0, ge=0.0, le=100.0,
+        description="Minimum match percentage threshold (0-100)"
+    )
 
 
 class SaveJobRequest(BaseModel):

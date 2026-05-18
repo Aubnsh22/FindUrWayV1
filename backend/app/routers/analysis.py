@@ -5,7 +5,7 @@ from app.models.schemas import (
     SkillAnalysis, CareerInsight, LearningPath, MarketInsight,
     SectorTrend, HiringHotspot,
 )
-from app.models.db_models import AnalysisHistory
+from app.models.db_models import AnalysisHistory, JobListing, User
 from app.services.job_source_manager import JobSourceManager
 from app.services.matching_service import match_profile_to_jobs
 from app.services.skill_service import (
@@ -13,6 +13,7 @@ from app.services.skill_service import (
     generate_career_insights, generate_learning_paths,
     get_morocco_market_intel,
 )
+from app.routers.auth import get_optional_user
 from app.database import get_db
 import logging
 import tempfile
@@ -25,7 +26,8 @@ router = APIRouter(prefix="/api", tags=["Analysis"])
 @router.post("/analyze", response_model=AnalysisResponse)
 async def analyze_profile(
     profile: ProfileInput,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_optional_user),
 ):
     try:
         skills = extract_skills(profile.text)
@@ -42,7 +44,41 @@ async def analyze_profile(
         )
         logger.info(f"Fetched {len(raw_jobs)} jobs across {len(top_categories)} categories")
 
-        matched_jobs = match_profile_to_jobs(profile.text, raw_jobs)
+        # Query local cached jobs from database to include Casablanca / Morocco jobs
+        db_jobs = db.query(JobListing).filter(JobListing.category.in_(top_categories)).all()
+        raw_db_jobs = []
+        for j in db_jobs:
+            raw_db_jobs.append({
+                "job_id": j.job_id,
+                "title": j.title,
+                "company": j.company,
+                "location": j.location,
+                "description": j.description,
+                "salary_min": j.salary_min,
+                "salary_max": j.salary_max,
+                "category": j.category,
+                "url": j.url,
+            })
+        logger.info(f"Retrieved {len(raw_db_jobs)} jobs from database warehouse")
+
+        # Merge local DB jobs and live API jobs (prioritizing local DB Moroccan jobs)
+        seen_job_ids = set()
+        merged_jobs = []
+        for j in raw_db_jobs:
+            if j.get("job_id") not in seen_job_ids:
+                seen_job_ids.add(j.get("job_id"))
+                merged_jobs.append(j)
+        for j in raw_jobs:
+            if j.get("job_id") not in seen_job_ids:
+                seen_job_ids.add(j.get("job_id"))
+                merged_jobs.append(j)
+
+        matched_jobs = match_profile_to_jobs(
+            profile.text, merged_jobs,
+            preferred_city=profile.preferred_city,
+            min_match_score=profile.min_match_score,
+            preferred_categories=profile.preferred_categories,
+        )
 
         avg_match = (
             sum(j.match_percentage for j in matched_jobs) / len(matched_jobs)
@@ -62,6 +98,7 @@ async def analyze_profile(
 
         try:
             history = AnalysisHistory(
+                user_id=current_user.id if current_user else None,
                 profile_text=profile.text[:1000],
                 extracted_skills=[
                     s for s in skills.technical_skills + skills.frameworks
