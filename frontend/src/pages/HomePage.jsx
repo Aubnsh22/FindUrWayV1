@@ -247,30 +247,39 @@ function StatsBar() {
     { icon: MapPin, value: 'Morocco Tech', label: 'Regional Focus' },
   ]
 
-  // Quadruple items to make sure the loop spans past the screen width with absolute seamless alignment
+  // Quadruple items for infinite scroll
   const doubledStats = [...stats, ...stats, ...stats, ...stats]
 
   return (
     <div className="relative py-12 select-none overflow-hidden -mx-4 md:-mx-8 lg:-mx-12">
-      {/* Heavy Edge Masks: Absolute solid masking at the extreme edges to prevent any hard lines */}
-      <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-[var(--color-void)] via-[var(--color-void)] to-transparent z-20 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-[var(--color-void)] via-[var(--color-void)] to-transparent z-20 pointer-events-none" />
-
-      <div className="flex gap-6 w-max animate-marquee-ltr relative z-0">
-        {doubledStats.map((s, i) => (
-          <div 
-            key={i} 
-            className="glass-card p-4.5 px-6 border border-black/[0.04] bg-white/70 flex items-center gap-5 min-w-[280px]"
-          >
-            <div className="w-10 h-10 rounded-xl bg-cyber-cyan/[0.03] border border-cyber-cyan/10 flex items-center justify-center text-cyber-cyan">
-              <s.icon className="w-5 h-5" />
+      {/* 
+        High-Performance Masking Layer 
+        Using mask-image for true pixel-perfect transparency transitions.
+        This provides a much smoother fade than stacked gradient divs.
+      */}
+      <div 
+        className="relative overflow-hidden"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+        }}
+      >
+        <div className="flex gap-6 w-max animate-marquee-ltr relative z-0 py-4">
+          {doubledStats.map((s, i) => (
+            <div 
+              key={i} 
+              className="glass-card p-4.5 px-6 border border-white/5 bg-white/5 backdrop-blur-md flex items-center gap-5 min-w-[300px]"
+            >
+              <div className="w-10 h-10 rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/20 flex items-center justify-center text-cyber-cyan shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                <s.icon className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-[9px] text-text-dim font-bold tracking-wider uppercase font-mono block leading-none">{s.label}</span>
+                <span className="text-xl font-bold font-mono text-white tracking-tight block mt-1.5 leading-none">{s.value}</span>
+              </div>
             </div>
-            <div>
-              <span className="text-[9px] text-text-dim font-bold tracking-wider uppercase font-mono block leading-none">{s.label}</span>
-              <span className="text-xl font-bold font-mono text-text-white tracking-tight block mt-1.5 leading-none">{s.value}</span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
