@@ -41,8 +41,8 @@ export default function ProfilePage() {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#C46B4D]/10 to-[#C46B4D]/5 border border-[#C46B4D]/15 flex items-center justify-center">
-                <Compass className="w-7 h-7 text-[#C46B4D]" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#111111]/10 to-[#111111]/5 border border-[#111111]/15 flex items-center justify-center">
+                <Compass className="w-7 h-7 text-[#111111]" />
               </div>
               <div>
                 <h1 className="text-2xl font-extrabold text-text-white">{user?.username}</h1>
@@ -106,7 +106,7 @@ export default function ProfilePage() {
                         <span className="text-sm font-bold text-text-white truncate">
                           {item.profile_name || 'Profile Analysis'}
                         </span>
-                        <span className="text-xs font-bold text-[#C46B4D] bg-[#C46B4D]/[0.06] px-2 py-0.5 rounded-md">
+                        <span className="text-xs font-bold text-[#111111] bg-[#111111]/[0.06] px-2 py-0.5 rounded-md">
                           {Math.round(item.avg_match_score)}% avg match
                         </span>
                       </div>

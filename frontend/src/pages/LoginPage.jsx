@@ -39,8 +39,8 @@ export default function LoginPage() {
         className="glass-card w-full max-w-md p-8"
       >
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C46B4D]/10 to-[#C46B4D]/5 border border-[#C46B4D]/15 flex items-center justify-center">
-            <Compass className="w-5 h-5 text-[#C46B4D]" />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#111111]/10 to-[#111111]/5 border border-[#111111]/15 flex items-center justify-center">
+            <Compass className="w-5 h-5 text-[#111111]" />
           </div>
           <div>
             <h1 className="text-xl font-extrabold text-text-white">Welcome Back</h1>
@@ -92,7 +92,7 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-text-mid">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-[#C46B4D] font-bold hover:underline">
+          <Link to="/signup" className="text-[#111111] font-bold hover:underline">
             Sign up
           </Link>
         </p>

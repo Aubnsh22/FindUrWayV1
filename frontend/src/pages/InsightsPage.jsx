@@ -26,7 +26,7 @@ export default function InsightsPage() {
     name: h.city,
     jobs: h.job_count,
     salary: h.avg_salary_mad,
-    color: ['#2A362B', '#405342', '#5B735E', '#7D9680', '#A2B7A5'][i % 5]
+    color: ['#000000', '#111111', '#1A1A1A', '#333333', '#666666'][i % 5]
   }))
 
   return (
@@ -51,20 +51,20 @@ export default function InsightsPage() {
                   { month: 'Q4 (Proj)', ai: 95, web: 55, cloud: 80 },
                 ]}>
                   <defs>
-                    <linearGradient id="colorAi" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#2A362B" stopOpacity={0.15}/><stop offset="95%" stopColor="#2A362B" stopOpacity={0}/></linearGradient>
-                    <linearGradient id="colorCloud" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#5B735E" stopOpacity={0.1}/><stop offset="95%" stopColor="#5B735E" stopOpacity={0}/></linearGradient>
+                    <linearGradient id="colorAi" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#000000" stopOpacity={0.15}/><stop offset="95%" stopColor="#000000" stopOpacity={0}/></linearGradient>
+                    <linearGradient id="colorCloud" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#1A1A1A" stopOpacity={0.1}/><stop offset="95%" stopColor="#1A1A1A" stopOpacity={0}/></linearGradient>
                   </defs>
                   <XAxis dataKey="month" stroke="#768278" fontSize={11} tickLine={false} axisLine={false} />
                   <YAxis stroke="#768278" fontSize={11} tickLine={false} axisLine={false} />
                   <Tooltip contentStyle={{ background: 'rgba(255, 255, 255, 0.96)', border: '1px solid rgba(0, 0, 0, 0.05)', borderRadius: '12px', fontSize: '11px', fontFamily: 'monospace', color: '#000000', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }} />
-                  <Area type="monotone" dataKey="ai" stroke="#2A362B" fillOpacity={1} fill="url(#colorAi)" strokeWidth={2} />
-                  <Area type="monotone" dataKey="cloud" stroke="#5B735E" fillOpacity={1} fill="url(#colorCloud)" strokeWidth={2} />
+                  <Area type="monotone" dataKey="ai" stroke="#000000" fillOpacity={1} fill="url(#colorAi)" strokeWidth={2} />
+                  <Area type="monotone" dataKey="cloud" stroke="#1A1A1A" fillOpacity={1} fill="url(#colorCloud)" strokeWidth={2} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
             <div className="flex gap-4 mt-4 justify-center text-xs text-text-mid">
-              <span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[#2A362B]" /> AI / ML</span>
-              <span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[#5B735E]" /> Cloud / DevOps</span>
+              <span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[#000000]" /> AI / ML</span>
+              <span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[#1A1A1A]" /> Cloud / DevOps</span>
             </div>
           </motion.div>
 

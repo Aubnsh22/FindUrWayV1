@@ -43,7 +43,7 @@ export default function ParticleField({ count = 60, className = '' }) {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `hsla(${p.hue}, 100%, 70%, ${p.opacity})`
+        ctx.fillStyle = `rgba(0, 0, 0, ${p.opacity * 0.3})`
         ctx.fill()
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -54,7 +54,7 @@ export default function ParticleField({ count = 60, className = '' }) {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `hsla(185, 100%, 50%, ${0.06 * (1 - dist / 120)})`
+            ctx.strokeStyle = `rgba(0, 0, 0, ${0.08 * (1 - dist / 120)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }

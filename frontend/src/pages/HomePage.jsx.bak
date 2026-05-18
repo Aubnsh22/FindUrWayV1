@@ -158,8 +158,8 @@ function NlpWorkspace() {
       style={{
         transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(${tilt.x === 0 && tilt.y === 0 ? '1, 1, 1' : '1.015, 1.015, 1.015'})`,
         boxShadow: tilt.x === 0 && tilt.y === 0 
-          ? '0 20px 50px rgba(0, 0, 0,0.02)'
-          : '0 30px 60px rgba(0, 0, 0,0.08), 0 0 30px rgba(0, 0, 0, 0.01)',
+          ? '0 20px 50px rgba(42,54,43,0.02)'
+          : '0 30px 60px rgba(42,54,43,0.08), 0 0 30px rgba(42, 54, 43, 0.01)',
       }}
     >
       
@@ -336,12 +336,12 @@ function TrendingSkills({ skills, loading }) {
 
 function CareerPaths() {
   const categories = [
-    { name: 'Data Science', icon: Brain, count: 85, color: '#999999' },
-    { name: 'AI / Machine Learning', icon: Cpu, count: 62, color: '#999999' },
-    { name: 'Data Analytics', icon: BarChart3, count: 104, color: '#999999' },
-    { name: 'Business Intelligence', icon: TrendingUp, count: 78, color: '#999999' },
-    { name: 'Software Engineering', icon: Code2, count: 156, color: '#999999' },
-    { name: 'Data Engineering', icon: Database, count: 54, color: '#999999' },
+    { name: 'Data Science', icon: Brain, count: 85, color: '#CBBBA0' },
+    { name: 'AI / Machine Learning', icon: Cpu, count: 62, color: '#CBBBA0' },
+    { name: 'Data Analytics', icon: BarChart3, count: 104, color: '#CBBBA0' },
+    { name: 'Business Intelligence', icon: TrendingUp, count: 78, color: '#CBBBA0' },
+    { name: 'Software Engineering', icon: Code2, count: 156, color: '#CBBBA0' },
+    { name: 'Data Engineering', icon: Database, count: 54, color: '#CBBBA0' },
   ]
   return (
     <section className="py-20 relative">
@@ -393,9 +393,9 @@ function CareerPaths() {
 
 function HowItWorks() {
   const steps = [
-    { step: '01', icon: BookOpen, title: 'Describe Profile', desc: 'Share your stack, projects, and career preferences in our developer editor console.', color: 'var(--color-warm-accent)' },
-    { step: '02', icon: Brain, title: 'Semantic Alignment', desc: 'Our offline NLP engine extracts skills and correlates them against regional demand.', color: 'var(--color-neon-purple)' },
-    { step: '03', icon: Target, title: 'Correlated Matches', desc: 'Get clean, ranked opportunities with transparent matching scores and regional boosts.', color: 'var(--color-cyber-cyan)' },
+    { step: '01', icon: BookOpen, title: 'Describe Profile', desc: 'Share your stack, projects, and career preferences in our developer editor console.', color: '#949CC5' },
+    { step: '02', icon: Brain, title: 'Semantic Alignment', desc: 'Our offline NLP engine extracts skills and correlates them against regional demand.', color: '#C59B93' },
+    { step: '03', icon: Target, title: 'Correlated Matches', desc: 'Get clean, ranked opportunities with transparent matching scores and regional boosts.', color: '#9CAF88' },
   ]
   return (
     <section className="py-20 relative">
@@ -413,18 +413,13 @@ function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.5 }} 
               viewport={{ once: true }}
-              className="glass-card p-8 text-center relative group"
+              className="glass-card p-8 bg-white/80 border border-black/[0.04] text-center relative group"
             >
-              <div className="w-14 h-14 rounded-full border border-glass-border flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-110"
-                   style={{ backgroundColor: `color-mix(in srgb, ${item.color} 10%, transparent)`, borderColor: `color-mix(in srgb, ${item.color} 30%, transparent)`, color: item.color }}>
-                <item.icon className="w-6 h-6" />
-              </div>
-              <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-3 text-[10px] font-bold font-mono tracking-widest"
-                   style={{ color: item.color }}>
+              <div className="w-10 h-10 rounded-full border border-white/[0.04] bg-white/[0.01] flex items-center justify-center mx-auto mb-5 text-[11px] font-bold font-mono tracking-widest text-text-dim select-none">
                 {item.step}
               </div>
-              <h3 className="text-base font-bold text-text-white mb-3 tracking-tight">{item.title}</h3>
-              <p className="text-sm text-text-light leading-relaxed max-w-[240px] mx-auto opacity-90">{item.desc}</p>
+              <h3 className="text-sm font-bold text-text-white mb-2">{item.title}</h3>
+              <p className="text-xs text-text-dim leading-relaxed max-w-[240px] mx-auto">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -578,7 +573,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             animate={{ scale: profileFocused ? 1.02 : 1 }}
-            className="w-full rounded-2xl border border-black/[0.04] bg-white/80 backdrop-blur-xl shadow-[0_20px_50px_rgba(0, 0, 0,0.02)] overflow-hidden"
+            className="w-full rounded-2xl border border-black/[0.04] bg-white/80 backdrop-blur-xl shadow-[0_20px_50px_rgba(42,54,43,0.02)] overflow-hidden"
           >
             {/* macOS Window Title bar */}
             <div className="px-4 py-3 border-b border-black/[0.03] bg-black/[0.005] flex items-center justify-between select-none">
@@ -692,7 +687,7 @@ export default function HomePage() {
         <div className="container-app text-center">
           <div className="flex items-center justify-center gap-2.5 mb-3">
             <Compass className="w-4 h-4 text-cyber-cyan" />
-            <span className="text-sm font-bold text-text-white">Find<span className="gradient-text font-black">Ur</span>Way</span>
+              <span className="text-sm font-bold text-text-white">Find<span className="text-[#3B82F6] font-black">Ur</span>Way</span>
           </div>
           <p className="text-[10px] font-bold text-text-dim tracking-wider uppercase font-mono">Moroccan Tech Opportunity Classifier</p>
           <p className="text-[10px] text-text-dim font-mono mt-1.5">Offline Semantics · PyTorch & Fastapi · Zero External Tracking</p>

@@ -45,7 +45,7 @@ function MobileAuthButtons({ close }) {
       <Link
         to="/login"
         onClick={close}
-        className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold text-[#C46B4D] border border-[#C46B4D]/15 bg-[#C46B4D]/[0.04] hover:bg-[#C46B4D]/[0.08]"
+        className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold text-cyber-cyan border border-cyber-cyan/15 bg-cyber-cyan/[0.04] hover:bg-cyber-cyan/[0.08]"
       >
         <LogIn className="w-4 h-4" />
         Sign In
@@ -63,7 +63,7 @@ function AuthButtonsDesktop() {
       <div className="hidden md:flex items-center gap-2">
         <Link
           to="/profile"
-          className="flex items-center gap-2 px-3 py-2 rounded-xl text-[13px] font-bold text-text-mid hover:text-[#C46B4D] transition-all duration-300 hover:bg-[#C46B4D]/[0.04]"
+          className="flex items-center gap-2 px-3 py-2 rounded-xl text-[13px] font-bold text-text-mid hover:text-[#111111] transition-all duration-300 hover:bg-[#111111]/[0.04]"
         >
           <User className="w-3.5 h-3.5" />
           {user.username}
@@ -82,7 +82,7 @@ function AuthButtonsDesktop() {
     <div className="hidden md:flex items-center gap-1">
       <Link
         to="/login"
-          className="flex items-center gap-2 px-3 py-2 rounded-xl text-[13px] font-bold text-text-mid hover:text-[#C46B4D] transition-all duration-300 hover:bg-[#C46B4D]/[0.04]"
+          className="flex items-center gap-2 px-3 py-2 rounded-xl text-[13px] font-bold text-text-mid hover:text-[#111111] transition-all duration-300 hover:bg-[#111111]/[0.04]"
       >
         <LogIn className="w-3.5 h-3.5" />
         Sign In
@@ -116,7 +116,7 @@ export default function Navbar() {
       <nav 
         className={`w-full relative transition-all duration-500 ease-out group/nav ${
           scrolled 
-            ? 'max-w-[1350px] rounded-2xl border border-black/[0.04] hover:border-cyber-cyan/15 shadow-[0_12px_40px_rgba(42,54,43,0.03)]' 
+            ? 'max-w-[1350px] rounded-2xl border border-black/[0.04] hover:border-cyber-cyan/15 shadow-[0_12px_40px_rgba(0, 0, 0,0.03)]' 
             : 'max-w-full rounded-none border-b border-black/[0.04]'
         }`}
         id="main-nav"
@@ -142,12 +142,12 @@ export default function Navbar() {
             <div className="relative w-9 h-9 flex-shrink-0">
               <div className="absolute inset-0 rounded-xl bg-cyber-cyan/10 blur-md group-hover:bg-cyber-cyan/20 transition-all duration-500" />
               <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyber-cyan/10 to-neon-purple/10 border border-cyber-cyan/15 flex items-center justify-center group-hover:border-cyber-cyan/35 transition-all duration-300">
-                <Compass className="w-[18px] h-[18px] text-[#C46B4D] group-hover:rotate-[45deg] transition-transform duration-500 ease-out" />
+                <Compass className="w-[18px] h-[18px] text-cyber-cyan group-hover:rotate-[45deg] transition-transform duration-500 ease-out" />
               </div>
             </div>
             <span className="text-base md:text-lg font-extrabold tracking-tight text-text-white flex items-center gap-1 select-none">
               Find<span className="gradient-text font-black">Ur</span>Way
-              <span className="w-1.5 h-1.5 rounded-full bg-cyber-cyan animate-pulse shadow-[0_0_8px_rgba(42,54,43,0.3)]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-cyber-cyan animate-pulse shadow-[0_0_8px_rgba(0, 0, 0,0.3)]" />
             </span>
           </Link>
 
@@ -163,7 +163,7 @@ export default function Navbar() {
                     relative flex items-center gap-2.5 px-4 py-2 rounded-xl text-[13px] font-bold
                     transition-all duration-300 group/link
                     ${isActive
-                      ? 'text-[#C46B4D]'
+                      ? 'text-cyber-cyan'
                       : 'text-text-mid hover:text-text-light hover:bg-black/[0.015]'
                     }
                   `}
@@ -171,11 +171,11 @@ export default function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="nav-active"
-                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#C46B4D]/[0.06] to-[#C46B4D]/[0.02] border border-[#C46B4D]/10 shadow-[0_2px_8px_rgba(196,107,77,0.03)]"
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyber-cyan/[0.06] to-cyber-cyan/[0.02] border border-cyber-cyan/10 shadow-[0_2px_8px_rgba(0,0,0,0.03)]"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
-                  <Icon className={`w-3.5 h-3.5 relative z-10 transition-transform duration-300 group-hover/link:scale-110 ${isActive ? 'text-[#C46B4D]' : 'text-text-dim group-hover/link:text-text-light'}`} />
+                  <Icon className={`w-3.5 h-3.5 relative z-10 transition-transform duration-300 group-hover/link:scale-110 ${isActive ? 'text-cyber-cyan' : 'text-text-dim group-hover/link:text-text-light'}`} />
                   <span className="relative z-10">{label}</span>
                 </Link>
               )
@@ -186,12 +186,12 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             
             {/* Heartbeat radar ping status widget */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#C46B4D]/[0.04] border border-[#C46B4D]/12 hover:bg-[#C46B4D]/[0.08] transition-colors cursor-default select-none">
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyber-cyan/[0.04] border border-cyber-cyan/12 hover:bg-cyber-cyan/[0.08] transition-colors cursor-default select-none">
               <div className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C46B4D] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C46B4D]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-cyan opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-cyan" />
               </div>
-              <span className="text-[10px] font-bold text-[#C46B4D] tracking-wider uppercase font-mono">AI core online</span>
+              <span className="text-[10px] font-bold text-cyber-cyan tracking-wider uppercase font-mono">System online</span>
             </div>
 
             {/* Auth buttons — desktop */}
@@ -238,7 +238,7 @@ export default function Navbar() {
                         flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold
                         transition-all duration-300
                         ${isActive
-                          ? 'bg-[#C46B4D]/[0.06] text-[#C46B4D] border border-[#C46B4D]/10'
+                          ? 'bg-cyber-cyan/[0.06] text-cyber-cyan border border-cyber-cyan/10'
                           : 'text-text-mid hover:text-text-light hover:bg-black/[0.015]'
                         }
                       `}

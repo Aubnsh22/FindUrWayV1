@@ -21,7 +21,7 @@ function MatchExplanation({ explanation }) {
   return (
     <div className="mt-3 pt-3 border-t border-black/[0.04]">
       <button onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 text-xs font-medium text-[#C46B4D] hover:text-[#C46B4D]/70 transition-colors w-full">
+        className="flex items-center gap-1.5 text-xs font-medium text-[#111111] hover:text-[#111111]/70 transition-colors w-full">
         <Info className="w-3.5 h-3.5" />
         Why this matches you
         {open ? <ChevronUp className="w-3 h-3 ml-auto" /> : <ChevronDown className="w-3 h-3 ml-auto" />}
@@ -33,7 +33,7 @@ function MatchExplanation({ explanation }) {
             <p className="text-xs text-[#768278] mt-1.5 italic">{explanation.compatibility}</p>
             {coreMatched.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-1">
-                {coreMatched.map(s => <span key={s} className="text-[10px] px-2 py-0.5 rounded-full bg-[#2A362B]/[0.05] text-[#2A362B] border border-[#2A362B]/10">{s}</span>)}
+                {coreMatched.map(s => <span key={s} className="text-[10px] px-2 py-0.5 rounded-full bg-[#000000]/[0.05] text-[#000000] border border-[#000000]/10">{s}</span>)}
               </div>
             )}
           </motion.div>
@@ -70,28 +70,28 @@ function JobCard({ job, index, onSave, savedIds }) {
   return (
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.04, duration: 0.45 }}
-      className="bg-white/80 rounded-2xl border border-black/[0.04] p-5 transition-all duration-300 hover:border-[#2A362B]/15 hover:shadow-[0_8px_30px_rgba(42,54,43,0.04)]">
+      className="bg-white/80 rounded-2xl border border-black/[0.04] p-5 transition-all duration-300 hover:border-[#000000]/15 hover:shadow-[0_8px_30px_rgba(0, 0, 0,0.04)]">
       <div className="flex items-start gap-4">
-        <div className="hidden sm:flex flex-shrink-0 w-14 h-14 rounded-xl bg-[#C46B4D]/[0.06] border border-[#C46B4D]/15 items-center justify-center flex-col">
-          <span className="text-lg font-bold font-mono text-[#C46B4D] leading-none">{pct.toFixed(0)}</span>
+        <div className="hidden sm:flex flex-shrink-0 w-14 h-14 rounded-xl bg-[#111111]/[0.06] border border-[#111111]/15 items-center justify-center flex-col">
+          <span className="text-lg font-bold font-mono text-[#111111] leading-none">{pct.toFixed(0)}</span>
           <span className="text-[9px] text-[#768278] font-medium tracking-wider uppercase leading-none mt-0.5">{pctLabel}</span>
         </div>
 
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-3 mb-1">
             <div className="flex items-center gap-2 flex-wrap min-w-0">
-              <span className="sm:hidden text-xs font-bold font-mono text-[#C46B4D] bg-[#C46B4D]/[0.06] px-2 py-0.5 rounded-md">{pct.toFixed(0)}%</span>
+              <span className="sm:hidden text-xs font-bold font-mono text-[#111111] bg-[#111111]/[0.06] px-2 py-0.5 rounded-md">{pct.toFixed(0)}%</span>
               {job.category && (
-                <span className="text-[10px] font-medium text-[#6B786C] bg-[#6B786C]/[0.06] px-2 py-0.5 rounded-md border border-[#6B786C]/10">{job.category}</span>
+                <span className="text-[10px] font-medium text-[#333333] bg-[#333333]/[0.06] px-2 py-0.5 rounded-md border border-[#333333]/10">{job.category}</span>
               )}
               {isMorocco && (
-                <span className="text-[10px] font-medium text-[#2A362B] bg-[#2A362B]/[0.06] px-2 py-0.5 rounded-md border border-[#2A362B]/10 flex items-center gap-1">
+                <span className="text-[10px] font-medium text-[#000000] bg-[#000000]/[0.06] px-2 py-0.5 rounded-md border border-[#000000]/10 flex items-center gap-1">
                   <MapPin className="w-2.5 h-2.5" /> Morocco
                 </span>
               )}
             </div>
             <button onClick={handleSave}
-              className={`p-1.5 rounded-lg transition-all flex-shrink-0 ${isSaved ? 'bg-[#C46B4D]/10 text-[#C46B4D]' : 'hover:bg-black/[0.02] text-[#768278] hover:text-[#C46B4D]'}`}>
+              className={`p-1.5 rounded-lg transition-all flex-shrink-0 ${isSaved ? 'bg-[#111111]/10 text-[#111111]' : 'hover:bg-black/[0.02] text-[#768278] hover:text-[#111111]'}`}>
               {isSaved ? <BookmarkCheck className="w-4 h-4" /> : <Bookmark className="w-4 h-4" />}
             </button>
           </div>
@@ -109,7 +109,7 @@ function JobCard({ job, index, onSave, savedIds }) {
 
           <div className="flex flex-wrap items-center gap-2">
             {job.matched_skills?.slice(0, 6).map(s => (
-              <span key={s} className="text-[11px] px-2.5 py-1 rounded-lg bg-[#C46B4D]/[0.05] border border-[#C46B4D]/12 text-[#C46B4D] font-medium">{s}</span>
+              <span key={s} className="text-[11px] px-2.5 py-1 rounded-lg bg-[#111111]/[0.05] border border-[#111111]/12 text-[#111111] font-medium">{s}</span>
             ))}
             {(job.missing_skills?.length || 0) > 0 && (
               <span className="text-[11px] text-[#768278] font-medium">+{job.missing_skills.length} gaps</span>
@@ -121,7 +121,7 @@ function JobCard({ job, index, onSave, savedIds }) {
           {job.url && (
             <div className="mt-3 pt-3 border-t border-black/[0.04]">
               <a href={job.url} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#2A362B] hover:text-[#2A362B]/70 transition-colors">
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#000000] hover:text-[#000000]/70 transition-colors">
                 View Listing <ExternalLink className="w-3 h-3" />
               </a>
             </div>
@@ -142,7 +142,7 @@ function SkillGapBar({ label, matched, total }) {
       </div>
       <div className="h-1 bg-black/[0.04] rounded-full overflow-hidden">
         <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 1 }}
-          className="h-full rounded-full bg-[#2A362B]/30" />
+          className="h-full rounded-full bg-[#000000]/30" />
       </div>
     </div>
   )
@@ -159,8 +159,8 @@ function ProfileHeader({ results }) {
     <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
       className="bg-white/70 border border-black/[0.04] rounded-2xl p-5 mb-6">
       <div className="flex items-start gap-4 flex-wrap">
-        <div className="w-10 h-10 rounded-xl bg-[#2A362B]/[0.06] border border-[#2A362B]/10 flex items-center justify-center flex-shrink-0">
-          <Brain className="w-5 h-5 text-[#2A362B]" />
+        <div className="w-10 h-10 rounded-xl bg-[#000000]/[0.06] border border-[#000000]/10 flex items-center justify-center flex-shrink-0">
+          <Brain className="w-5 h-5 text-[#000000]" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-sm font-semibold text-[#000000] mb-1">AI Profile Understanding</div>
@@ -230,13 +230,13 @@ export default function ResultsPage() {
     <div className="pt-20 pb-16">
       <div className="container-app">
         <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-          <button onClick={() => navigate('/')} className="flex items-center gap-1.5 text-sm text-[#768278] hover:text-[#2A362B] transition-colors mb-4">
+          <button onClick={() => navigate('/')} className="flex items-center gap-1.5 text-sm text-[#768278] hover:text-[#000000] transition-colors mb-4">
             <ArrowLeft className="w-4 h-4" />New Analysis
           </button>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-1 text-[#000000]">Your <span className="text-[#2A362B]">Career Matches</span></h1>
-              <p className="text-[#4A544C] text-sm">{results.total_jobs_analyzed} positions analyzed &middot; <span className="text-[#2A362B] font-mono font-semibold">{results.avg_match_score.toFixed(0)}%</span> average match</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-1 text-[#000000]">Your <span className="text-[#000000]">Career Matches</span></h1>
+              <p className="text-[#4A544C] text-sm">{results.total_jobs_analyzed} positions analyzed &middot; <span className="text-[#000000] font-mono font-semibold">{results.avg_match_score.toFixed(0)}%</span> average match</p>
             </div>
             <div className="flex gap-3">
               {[
@@ -244,7 +244,7 @@ export default function ResultsPage() {
                 { label: 'Skills', value: results.skills.technical_skills.length },
               ].map(s => (
                 <div key={s.label} className="bg-white/70 border border-black/[0.04] rounded-xl px-4 py-2.5 text-center min-w-[80px]">
-                  <div className="text-xl font-bold font-mono text-[#2A362B]">{s.value}</div>
+                  <div className="text-xl font-bold font-mono text-[#000000]">{s.value}</div>
                   <div className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">{s.label}</div>
                 </div>
               ))}
@@ -260,61 +260,61 @@ export default function ResultsPage() {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#768278]" />
                 <input type="text" placeholder="Search jobs..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full bg-white/50 border border-black/[0.06] rounded-xl pl-10 pr-4 py-2.5 text-sm text-[#1A1E1A] placeholder:text-[#768278] focus:outline-none focus:border-[#2A362B]/20 transition-colors" />
+                  className="w-full bg-white/50 border border-black/[0.06] rounded-xl pl-10 pr-4 py-2.5 text-sm text-[#1A1E1A] placeholder:text-[#768278] focus:outline-none focus:border-[#000000]/20 transition-colors" />
               </div>
             </div>
             <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><BarChart3 className="w-4 h-4 text-[#2A362B]" />Skill Coverage</div>
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><BarChart3 className="w-4 h-4 text-[#000000]" />Skill Coverage</div>
               <SkillGapBar label="Technical Skills" matched={allMatched.size} total={results.skills.technical_skills.length || 1} />
             </div>
             <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><Filter className="w-4 h-4 text-[#2A362B]" />Filters</div>
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><Filter className="w-4 h-4 text-[#000000]" />Filters</div>
               <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">City</label>
               <div className="relative mt-1 mb-3">
                 <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#768278]" />
                 <input type="text" placeholder="Any city" value={filterCity} onChange={e => { setFilterCity(e.target.value); setPage(1); }}
-                  className="w-full bg-white/50 border border-black/[0.06] rounded-xl pl-9 pr-3 py-2 text-sm text-[#1A1E1A] placeholder:text-[#768278] focus:outline-none focus:border-[#2A362B]/20 transition-colors" />
+                  className="w-full bg-white/50 border border-black/[0.06] rounded-xl pl-9 pr-3 py-2 text-sm text-[#1A1E1A] placeholder:text-[#768278] focus:outline-none focus:border-[#000000]/20 transition-colors" />
               </div>
               <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">Category</label>
               <select value={filterCategory} onChange={e => { setFilterCategory(e.target.value); setPage(1); }}
-                className="w-full bg-white/50 border border-black/[0.06] rounded-xl px-3 py-2 text-sm text-[#1A1E1A] focus:outline-none focus:border-[#2A362B]/20 mt-1 mb-3">
+                className="w-full bg-white/50 border border-black/[0.06] rounded-xl px-3 py-2 text-sm text-[#1A1E1A] focus:outline-none focus:border-[#000000]/20 mt-1 mb-3">
                 <option value="all">All</option>
                 {categories.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
               <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">Min Match</label>
               <div className="flex items-center gap-2 mt-1 mb-3">
                 <input type="range" min={0} max={90} step={5} value={minThreshold} onChange={e => { setMinThreshold(Number(e.target.value)); setPage(1); }}
-                  className="flex-1 h-1 accent-[#2A362B] cursor-pointer" />
+                  className="flex-1 h-1 accent-[#000000] cursor-pointer" />
                 <span className="text-[10px] font-mono text-[#768278] font-semibold w-8 text-right">{minThreshold}%</span>
               </div>
               <label className="text-[10px] text-[#768278] uppercase tracking-wider font-medium">Sort</label>
               <select value={sortBy} onChange={e => { setSortBy(e.target.value); setPage(1); }}
-                className="w-full bg-white/50 border border-black/[0.06] rounded-xl px-3 py-2 text-sm text-[#1A1E1A] focus:outline-none focus:border-[#2A362B]/20 mt-1">
+                className="w-full bg-white/50 border border-black/[0.06] rounded-xl px-3 py-2 text-sm text-[#1A1E1A] focus:outline-none focus:border-[#000000]/20 mt-1">
                 <option value="match">Match %</option><option value="salary">Salary</option>
               </select>
             </div>
             <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><CheckCircle2 className="w-4 h-4 text-[#2A362B]" />Your Skills</div>
-              <div className="flex flex-wrap gap-1.5">{results.skills.technical_skills.slice(0, 12).map(s => <span key={s} className="text-[11px] px-2.5 py-1 rounded-lg bg-[#2A362B]/[0.04] border border-[#2A362B]/08 text-[#2A362B] font-medium">{s}</span>)}</div>
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><CheckCircle2 className="w-4 h-4 text-[#000000]" />Your Skills</div>
+              <div className="flex flex-wrap gap-1.5">{results.skills.technical_skills.slice(0, 12).map(s => <span key={s} className="text-[11px] px-2.5 py-1 rounded-lg bg-[#000000]/[0.04] border border-[#000000]/08 text-[#000000] font-medium">{s}</span>)}</div>
             </div>
             <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><Sparkles className="w-4 h-4 text-[#2A362B]" />AI Insights</div>
+              <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><Sparkles className="w-4 h-4 text-[#000000]" />AI Insights</div>
               <div className="space-y-3">{results.career_insights.map((ci, i) => (
                 <div key={i} className="text-sm"><div className="font-medium text-[#000000] mb-0.5">{ci.title}</div><p className="text-[11px] text-[#768278] leading-relaxed">{ci.description}</p></div>
               ))}</div>
             </div>
             {results.learning_paths?.length > 0 && (
               <div className="bg-white/70 border border-black/[0.04] rounded-2xl p-5">
-                <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><TrendingUp className="w-4 h-4 text-[#2A362B]" />Learn Next</div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#000000] mb-3"><TrendingUp className="w-4 h-4 text-[#000000]" />Learn Next</div>
                 <div className="space-y-2.5">{results.learning_paths.slice(0, 5).map((lp, i) => (
                   <div key={i} className="flex items-start gap-2">
-                    <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${lp.priority === 'high' ? 'bg-[#2A362B]' : 'bg-[#768278]'}`} />
+                    <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${lp.priority === 'high' ? 'bg-[#000000]' : 'bg-[#768278]'}`} />
                     <div className="flex-1">
                       <div className="text-xs font-medium text-[#000000]">{lp.skill}</div>
                       <div className="text-[11px] text-[#768278]">{lp.reason}</div>
-                      {lp.impact_label && <div className="text-[11px] text-[#2A362B] mt-0.5 font-medium"><Sparkles className="w-3 h-3 inline mr-0.5" />{lp.impact_label}</div>}
+                      {lp.impact_label && <div className="text-[11px] text-[#000000] mt-0.5 font-medium"><Sparkles className="w-3 h-3 inline mr-0.5" />{lp.impact_label}</div>}
                     </div>
-                    {lp.impact_score && <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded-full bg-[#2A362B]/[0.06] text-[#2A362B]">+{lp.impact_score}%</span>}
+                    {lp.impact_score && <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded-full bg-[#000000]/[0.06] text-[#000000]">+{lp.impact_score}%</span>}
                   </div>
                 ))}</div>
               </div>

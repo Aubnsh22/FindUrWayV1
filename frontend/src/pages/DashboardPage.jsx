@@ -12,7 +12,7 @@ import {
 } from 'recharts'
 import { MatchRing } from '../components/ui/SharedUI.jsx'
 
-const COLORS = ['#2A362B', '#405342', '#5B735E', '#7D9680', '#A2B7A5', '#CBBBA0']
+const COLORS = ['#000000', '#111111', '#1A1A1A', '#333333', '#666666', '#999999']
 
 const tooltipStyle = {
   contentStyle: {
@@ -95,10 +95,10 @@ export default function DashboardPage() {
   }))
 
   const matchDistribution = [
-    { name: '80-100%', value: results.jobs.filter(j => j.match_percentage >= 80).length, color: '#2A362B' },
-    { name: '60-80%', value: results.jobs.filter(j => j.match_percentage >= 60 && j.match_percentage < 80).length, color: '#405342' },
-    { name: '40-60%', value: results.jobs.filter(j => j.match_percentage >= 40 && j.match_percentage < 60).length, color: '#5B735E' },
-    { name: '<40%', value: results.jobs.filter(j => j.match_percentage < 40).length, color: '#7D9680' },
+    { name: '80-100%', value: results.jobs.filter(j => j.match_percentage >= 80).length, color: '#000000' },
+    { name: '60-80%', value: results.jobs.filter(j => j.match_percentage >= 60 && j.match_percentage < 80).length, color: '#111111' },
+    { name: '40-60%', value: results.jobs.filter(j => j.match_percentage >= 40 && j.match_percentage < 60).length, color: '#1A1A1A' },
+    { name: '<40%', value: results.jobs.filter(j => j.match_percentage < 40).length, color: '#333333' },
   ].filter(d => d.value > 0)
 
   const momentumData = Array.from({ length: 12 }, (_, i) => ({
@@ -157,10 +157,10 @@ export default function DashboardPage() {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-          <StatCard icon={Briefcase} label="Jobs Matched" value={results.jobs.length} color="#2A362B" delay={0.1} />
-          <StatCard icon={Target} label="Avg Match" value={`${avgMatch.toFixed(0)}%`} color="#405342" delay={0.15} />
-          <StatCard icon={Award} label="Skills Found" value={results.skills.technical_skills.length + results.skills.frameworks.length} color="#5B735E" delay={0.2} />
-          <StatCard icon={TrendingUp} label="Categories" value={results.top_categories.length} color="#7D9680" delay={0.25} />
+          <StatCard icon={Briefcase} label="Jobs Matched" value={results.jobs.length} color="#000000" delay={0.1} />
+          <StatCard icon={Target} label="Avg Match" value={`${avgMatch.toFixed(0)}%`} color="#111111" delay={0.15} />
+          <StatCard icon={Award} label="Skills Found" value={results.skills.technical_skills.length + results.skills.frameworks.length} color="#1A1A1A" delay={0.2} />
+          <StatCard icon={TrendingUp} label="Categories" value={results.top_categories.length} color="#333333" delay={0.25} />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
@@ -174,7 +174,7 @@ export default function DashboardPage() {
                   <PolarGrid stroke="rgba(0, 0, 0, 0.05)" />
                   <PolarAngleAxis dataKey="subject" tick={{ fill: '#768278', fontSize: 10, fontFamily: 'monospace' }} />
                   <PolarRadiusAxis tick={false} axisLine={false} />
-                  <Radar name="Skills" dataKey="A" stroke="#2A362B" fill="#2A362B" fillOpacity={0.12} strokeWidth={1.5} />
+                  <Radar name="Skills" dataKey="A" stroke="#000000" fill="#000000" fillOpacity={0.12} strokeWidth={1.5} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
@@ -214,15 +214,15 @@ export default function DashboardPage() {
                 <AreaChart data={momentumData}>
                   <defs>
                     <linearGradient id="demandGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#2A362B" stopOpacity={0.15} />
-                      <stop offset="100%" stopColor="#2A362B" stopOpacity={0} />
+                      <stop offset="0%" stopColor="#000000" stopOpacity={0.15} />
+                      <stop offset="100%" stopColor="#000000" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <XAxis dataKey="month" tick={{ fill: '#768278', fontSize: 10 }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fill: '#768278', fontSize: 10 }} axisLine={false} tickLine={false} />
                   <Tooltip {...tooltipStyle} />
-                  <Area type="monotone" dataKey="demand" stroke="#2A362B" fill="url(#demandGrad)" strokeWidth={2} />
-                  <Area type="monotone" dataKey="match" stroke="#5B735E" fill="transparent" strokeWidth={1.5} strokeDasharray="4 4" />
+                  <Area type="monotone" dataKey="demand" stroke="#000000" fill="url(#demandGrad)" strokeWidth={2} />
+                  <Area type="monotone" dataKey="match" stroke="#1A1A1A" fill="transparent" strokeWidth={1.5} strokeDasharray="4 4" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -234,7 +234,7 @@ export default function DashboardPage() {
             </h3>
             <div className="space-y-3">
               {results.career_insights.map((ci, i) => (
-                <div key={i} className="p-4 rounded-xl bg-white/60 border border-black/[0.03] shadow-[0_4px_20px_rgba(42,54,43,0.01)]">
+                <div key={i} className="p-4 rounded-xl bg-white/60 border border-black/[0.03] shadow-[0_4px_20px_rgba(0, 0, 0,0.01)]">
                   <div className="font-semibold text-text-white text-sm mb-1">{ci.title}</div>
                   <p className="text-xs text-text-mid leading-relaxed">{ci.description}</p>
                 </div>
@@ -248,9 +248,9 @@ export default function DashboardPage() {
                 <div className="space-y-2">
                   {results.learning_paths.slice(0, 4).map((lp, i) => (
                     <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/60 border border-black/[0.03]">
-                      <div className={`w-2 h-2 rounded-full ${lp.priority === 'high' ? 'bg-[#2A362B]' : 'bg-[#7D9680]'}`} />
+                      <div className={`w-2 h-2 rounded-full ${lp.priority === 'high' ? 'bg-[#000000]' : 'bg-[#333333]'}`} />
                       <span className="text-sm font-medium text-text-white flex-1">{lp.skill}</span>
-                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${lp.priority === 'high' ? 'bg-[#2A362B]/[0.06] text-[#2A362B]' : 'bg-[#7D9680]/[0.06] text-[#7D9680]'}`}>{lp.priority}</span>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${lp.priority === 'high' ? 'bg-[#000000]/[0.06] text-[#000000]' : 'bg-[#333333]/[0.06] text-[#333333]'}`}>{lp.priority}</span>
                     </div>
                   ))}
                 </div>

@@ -6,10 +6,10 @@ export function MatchRing({ percentage, size = 72, strokeWidth = 4 }) {
   const offset = circumference - (percentage / 100) * circumference
   
   const getColor = (pct) => {
-    if (pct >= 80) return { start: '#00FF88', end: '#00F0FF' }
-    if (pct >= 60) return { start: '#00F0FF', end: '#3B82F6' }
-    if (pct >= 40) return { start: '#FBBF24', end: '#F97316' }
-    return { start: '#FF3366', end: '#EF4444' }
+    if (pct >= 80) return { start: '#000000', end: '#333333' }
+    if (pct >= 60) return { start: '#333333', end: '#666666' }
+    if (pct >= 40) return { start: '#666666', end: '#999999' }
+    return { start: '#999999', end: '#CCCCCC' }
   }
   
   const colors = getColor(percentage)
