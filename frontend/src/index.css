@@ -4,14 +4,14 @@
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   
-  /* Ultra-Premium Minimalist Palette */
+  /* Ultra-Premium Minimalist Palette with Dynamic Glows */
   --color-void: #FAFAFA; /* Perfect sheer stark white/off-white background */
   --color-cyber-cyan: #111111; /* Sleek obsidian black */
   --color-neon-purple: #333333; /* Gunmetal gray */
   --color-neon-green: #000000; /* Pure black */
-  --color-neon-amber: #EAEAEA; /* Crisp light gray border line */
+  --color-neon-amber: #F97316; /* Premium Orange Glow for accents */
   --color-warm-accent: #0A0A0A; /* Deep premium black for buttons & pulses */
-  --color-neon-red: #D946EF; /* Preserved accent for warnings */
+  --color-neon-red: #EF4444; /* Alert/Glow Red */
   --color-neon-blue: #4B5563; /* Steel */
   
   /* Upgraded High-End VisionOS / Glass Parameters */
@@ -173,17 +173,17 @@
 
 @layer utilities {
   .orb {
-    @apply absolute rounded-full blur-[120px] opacity-5 pointer-events-none;
-    animation: orb-float 12s ease-in-out infinite alternate;
+    @apply absolute rounded-full blur-[140px] opacity-10 pointer-events-none;
+    animation: orb-float 15s ease-in-out infinite alternate;
   }
-  .orb-cyan { background: radial-gradient(circle, var(--color-cyber-cyan) 0%, transparent 70%); }
-  .orb-purple { background: radial-gradient(circle, var(--color-neon-purple) 0%, transparent 70%); }
-  .orb-warm { background: radial-gradient(circle, var(--color-warm-accent) 0%, transparent 70%); }
+  .orb-cyan { background: radial-gradient(circle, var(--color-neon-amber) 0%, transparent 75%); }
+  .orb-purple { background: radial-gradient(circle, var(--color-neon-red) 0%, transparent 75%); }
+  .orb-warm { background: radial-gradient(circle, var(--color-neon-amber) 0%, transparent 75%); }
   
   @keyframes orb-float {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.04; }
-    50% { transform: translate(20px, -20px) scale(1.03); opacity: 0.06; }
-    100% { transform: translate(-10px, 10px) scale(0.98); opacity: 0.04; }
+    0% { transform: translate(0, 0) scale(1.1); opacity: 0.12; }
+    50% { transform: translate(40px, -40px) scale(1.3); opacity: 0.18; }
+    100% { transform: translate(-20px, 20px) scale(1.1); opacity: 0.12; }
   }
 
   .skeleton {
