@@ -4,9 +4,9 @@ export default function BackgroundDecorations() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Dynamic Warm Premium Glows */}
-      <div className="orb orb-cyan top-[-10%] left-[-5%] w-[60vw] h-[60vw]" />
-      <div className="orb orb-purple bottom-[-15%] right-[-5%] w-[55vw] h-[55vw]" />
-      <div className="orb orb-warm top-[30%] left-[20%] w-[40vw] h-[40vw] opacity-[0.05]" />
+      <div className="orb orb-cyan top-[-15%] left-[-10%] w-[45vw] h-[45vw]" />
+      <div className="orb orb-purple bottom-[-20%] right-[-10%] w-[40vw] h-[40vw]" />
+      <div className="orb orb-warm top-[40%] left-[30%] w-[30vw] h-[30vw] opacity-[0.04]" />
       
       {/* AI / Neural Network (Career Paths & Skills) - Top Left */}
       <motion.div 
