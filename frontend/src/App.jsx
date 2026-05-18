@@ -11,12 +11,14 @@ import SkillTestPage from './pages/SkillTestPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import SignupPage from './pages/SignupPage.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
+import BackgroundDecorations from './components/ui/BackgroundDecorations.jsx'
 
 export default function App() {
   return (
     <Router>
       <AuthProvider>
         <div className="min-h-screen relative" style={{ background: 'var(--color-void)' }}>
+          <BackgroundDecorations />
           <Navbar />
           <main>
             <Routes>
