@@ -46,11 +46,19 @@ function StatCard({ icon: Icon, label, value, color, delay = 0 }) {
 export default function DashboardPage() {
   const navigate = useNavigate()
   const [results, setResults] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const stored = sessionStorage.getItem('analysisResults')
-    if (stored) { try { setResults(JSON.parse(stored)) } catch {} }
+    if (stored) { 
+      try { 
+        setResults(JSON.parse(stored))
+      } catch {} 
+    }
+    setLoading(false)
   }, [])
+
+  if (loading) return null
 
   if (!results) {
     return (

@@ -198,7 +198,7 @@ export default function ResultsPage() {
   useEffect(() => {
     const stored = sessionStorage.getItem('analysisResults')
     if (stored) {
-      try { setTimeout(() => { setResults(JSON.parse(stored)); setLoading(false) }, 2000) }
+      try { setResults(JSON.parse(stored)); setLoading(false) }
       catch { navigate('/') }
     } else { navigate('/') }
   }, [navigate])
