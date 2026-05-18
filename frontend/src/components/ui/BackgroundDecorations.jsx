@@ -70,6 +70,47 @@ export default function BackgroundDecorations() {
         animate={{ scale: [1, 1.5, 1], opacity: [0.1, 0.3, 0.1] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
+
+      {/* IT / Software Engineering Motifs */}
+      
+      {/* Floating Code Brackets */}
+      <motion.div 
+        className="absolute top-[20%] right-[15%] font-mono text-[#2A362B] text-2xl font-bold opacity-[0.03] select-none hidden lg:block"
+        animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {"</>"}
+      </motion.div>
+      <motion.div 
+        className="absolute bottom-[20%] left-[10%] font-mono text-[#6B786C] text-3xl font-light opacity-[0.03] select-none hidden lg:block"
+        animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      >
+        {"{ }"}
+      </motion.div>
+
+      {/* Circuit Board / Tech Traces (Bottom Center) */}
+      <motion.div 
+        className="absolute bottom-10 left-[45%] opacity-[0.04] hidden md:block"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.04 }}
+        transition={{ duration: 3 }}
+      >
+        <svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Circuit Traces */}
+          <path d="M10 140 L10 100 L50 60 L150 60 L180 30 L180 10" stroke="#2A362B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M30 140 L30 110 L60 80 L120 80 L150 50 L150 10" stroke="#C46B4D" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" opacity="0.7"/>
+          <path d="M50 140 L50 120 L70 100 L100 100 L120 80" stroke="#6B786C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          
+          {/* Circuit Nodes/Terminals */}
+          <circle cx="10" cy="140" r="3" fill="#2A362B" />
+          <circle cx="180" cy="10" r="4" fill="#2A362B" />
+          <circle cx="30" cy="140" r="2" fill="#C46B4D" />
+          <circle cx="150" cy="10" r="3" fill="#C46B4D" />
+          <circle cx="50" cy="140" r="2.5" fill="#6B786C" />
+          <circle cx="120" cy="80" r="3.5" fill="#6B786C" />
+        </svg>
+      </motion.div>
     </div>
   );
 }
