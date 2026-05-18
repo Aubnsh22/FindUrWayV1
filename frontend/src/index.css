@@ -4,23 +4,26 @@
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   
-  --color-void: #DDE8D0; /* Our gorgeous soft organic sage-milk matte base */
-  --color-cyber-cyan: #2A362B; /* Premium high-contrast deep forest obsidian */
-  --color-neon-purple: #6B786C; /* Muted sage gray */
-  --color-neon-green: #2A362B; /* Deep forest charcoal */
-  --color-neon-amber: #E4ECD9; /* Light alabaster sage */
-  --color-warm-accent: #C46B4D; /* Muted terracotta copper — primary action */
-  --color-neon-red: #D946EF; /* Accent */
+  /* Ultra-Premium Minimalist Palette */
+  --color-void: #FAFAFA; /* Perfect sheer stark white/off-white background */
+  --color-cyber-cyan: #111111; /* Sleek obsidian black */
+  --color-neon-purple: #333333; /* Gunmetal gray */
+  --color-neon-green: #000000; /* Pure black */
+  --color-neon-amber: #EAEAEA; /* Crisp light gray border line */
+  --color-warm-accent: #0A0A0A; /* Deep premium black for buttons & pulses */
+  --color-neon-red: #D946EF; /* Preserved accent for warnings */
   --color-neon-blue: #4B5563; /* Steel */
   
-  --color-glass-base: rgba(255, 255, 255, 0.72);
-  --color-glass-border: rgba(0, 0, 0, 0.05);
-  --color-glass-highlight: rgba(42, 54, 43, 0.01);
+  /* Upgraded High-End VisionOS / Glass Parameters */
+  --color-glass-base: rgba(255, 255, 255, 0.85);
+  --color-glass-border: rgba(0, 0, 0, 0.04);
+  --color-glass-highlight: rgba(255, 255, 255, 0.6);
 
-  --color-text-white: #000000; /* Crisp pure black for high-legibility headings */
-  --color-text-light: #1A1E1A; /* Highly readable deep forest-charcoal copy */
-  --color-text-mid: #4A544C; /* Sleek muted dark sage gray */
-  --color-text-dim: #768278; /* Cool sage gray for captions */
+  /* Refined High-Contrast Typography */
+  --color-text-white: #000000; /* Crisp pure black for assertive headings */
+  --color-text-light: #222222; /* Highly readable deep charcoal copy */
+  --color-text-mid: #555555; /* Secondary text - sleek gray */
+  --color-text-dim: #999999; /* Smooth captions */
 }
 
 @layer base {
@@ -99,13 +102,13 @@
   .btn-primary {
     @apply relative inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold tracking-wide transition-all duration-300 overflow-hidden text-white cursor-pointer;
     background: var(--color-warm-accent);
-    border: 1px solid rgba(196, 107, 77, 0.2);
-    box-shadow: 0 4px 15px rgba(196, 107, 77, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
   .btn-primary:hover {
     @apply scale-[1.01];
-    background: #b05a3e;
-    box-shadow: 0 6px 20px rgba(196, 107, 77, 0.25);
+    background: #000000;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
   
   .btn-secondary {
@@ -121,7 +124,7 @@
   }
 
   .gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#C46B4D] via-[#2A362B] to-[#1A1E1A];
+    @apply text-[#111111] drop-shadow-sm;
   }
 
   .skill-chip {
