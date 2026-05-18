@@ -251,10 +251,10 @@ function StatsBar() {
   const doubledStats = [...stats, ...stats, ...stats, ...stats]
 
   return (
-    <div className="w-full overflow-hidden relative py-2 select-none">
+    <div className="w-full overflow-hidden relative py-6 select-none -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
       {/* Premium edge-mask gradients */}
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--color-void)] to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--color-void)] to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--color-void)] via-[var(--color-void)]/80 to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--color-void)] via-[var(--color-void)]/80 to-transparent z-10 pointer-events-none" />
 
       <div className="flex gap-6 w-max animate-marquee-ltr">
         {doubledStats.map((s, i) => (
