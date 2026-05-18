@@ -6,7 +6,7 @@
   
   /* Ultra-Premium Minimalist Palette with Dynamic Glows */
   --color-void: #FAFAFA; /* Perfect sheer stark white/off-white background */
-  --color-cyber-cyan: #111111; /* Sleek obsidian black */
+  --color-cyber-cyan: #3B82F6; /* Premium Electric Blue for active highlights */
   --color-neon-purple: #333333; /* Gunmetal gray */
   --color-neon-green: #000000; /* Pure black */
   --color-neon-amber: #F97316; /* Premium Orange Glow for accents */
@@ -124,7 +124,7 @@
   }
 
   .gradient-text {
-    @apply text-[#111111] drop-shadow-sm;
+    @apply text-[#3B82F6] drop-shadow-sm;
   }
 
   .skill-chip {
