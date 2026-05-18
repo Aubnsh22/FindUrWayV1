@@ -251,12 +251,12 @@ function StatsBar() {
   const doubledStats = [...stats, ...stats, ...stats, ...stats]
 
   return (
-    <div className="w-screen overflow-hidden relative py-8 select-none -translate-x-1/2 left-1/2">
-      {/* Premium edge-mask gradients - Perfectly symmetrical fade for left and right */}
-      <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[var(--color-void)] via-[var(--color-void)]/90 to-transparent z-20 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-l from-[var(--color-void)] via-[var(--color-void)]/90 to-transparent z-20 pointer-events-none" />
+    <div className="relative py-12 select-none overflow-hidden -mx-4 md:-mx-8 lg:-mx-12">
+      {/* Heavy Edge Masks: Absolute solid masking at the extreme edges to prevent any hard lines */}
+      <div className="absolute inset-y-0 left-0 w-48 md:w-64 bg-gradient-to-r from-[var(--color-void)] via-[var(--color-void)] via-[var(--color-void)]/80 to-transparent z-20 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-48 md:w-64 bg-gradient-to-l from-[var(--color-void)] via-[var(--color-void)] via-[var(--color-void)]/80 to-transparent z-20 pointer-events-none" />
 
-      <div className="flex gap-6 w-max animate-marquee-ltr relative z-0">
+      <div className="flex gap-6 w-max animate-marquee-ltr relative z-0 pl-16">
         {doubledStats.map((s, i) => (
           <div 
             key={i} 
