@@ -268,14 +268,14 @@ function StatsBar() {
           {doubledStats.map((s, i) => (
             <div 
               key={i} 
-              className="glass-card p-4.5 px-6 border border-white/5 bg-white/5 backdrop-blur-md flex items-center gap-5 min-w-[300px]"
+              className="glass-card p-4.5 px-6 border border-black/[0.04] bg-white/70 backdrop-blur-md flex items-center gap-5 min-w-[300px]"
             >
               <div className="w-10 h-10 rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/20 flex items-center justify-center text-cyber-cyan shadow-[0_0_15px_rgba(59,130,246,0.15)]">
                 <s.icon className="w-5 h-5" />
               </div>
               <div>
                 <span className="text-[9px] text-text-dim font-bold tracking-wider uppercase font-mono block leading-none">{s.label}</span>
-                <span className="text-xl font-bold font-mono text-white tracking-tight block mt-1.5 leading-none">{s.value}</span>
+                <span className="text-xl font-bold font-mono text-text-white tracking-tight block mt-1.5 leading-none">{s.value}</span>
               </div>
             </div>
           ))}
